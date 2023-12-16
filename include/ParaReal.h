@@ -13,13 +13,12 @@ class ParaRealBase
 public:
 
   ParaRealBase();
-  virtual void run(const double T, const unsigned int n_pr_iter) = 0;
+  virtual void run(const unsigned int n_pr_iter) = 0;
   void set_final_time(const double T);
 
 protected:
 
   MPI_Comm                    mpi_communicator;
-  //ConditionalOStream          pcout;
 
   double                      global_T;
   unsigned int                n_inner_iter;
@@ -33,7 +32,6 @@ ParaRealBase::ParaRealBase()
 :     mpi_communicator(MPI_COMM_WORLD)
     , n_mpi_processes(Utilities::MPI::n_mpi_processes(mpi_communicator))
     , this_mpi_process(Utilities::MPI::this_mpi_process(mpi_communicator))
-    //, pcout(std::cout, (this_mpi_process == 0))
 {}
 
 void ParaRealBase::set_final_time(const double T)
@@ -42,14 +40,15 @@ void ParaRealBase::set_final_time(const double T)
 }
 
 
+
 class ParaReal_Root: public ParaRealBase
 {
 public:
 
   ParaReal_Root();
-  void set_inner_step_size(const double step_size=0.1);
   void set_outer_step_size(const double outer_it=1.0);
-  virtual void run(const double T, const unsigned int n_pr_iter) override;
+  void set_inner_step_size(const double step_size=0.1);
+  virtual void run(const unsigned int n_pr_iter) override;
 
 private:
 
@@ -62,8 +61,6 @@ private:
   GradientFlow                gf_G;
 
   unsigned int                n_outer_iter;
-
-  std::vector<double>         outer_time_vector;
 
   std::vector<std::tuple<Vector<double>, Vector<double>>> F_vectors; //to receive
   std::vector<std::tuple<Vector<double>, Vector<double>>> G_old_vectors;
@@ -82,6 +79,18 @@ ParaReal_Root::ParaReal_Root()
 {}
 
 
+
+void ParaReal_Root::set_outer_step_size(const double outer_it)
+{
+  assert(n_mpi_processes != 0);
+
+  delta_G = outer_it;
+  gf_G.set_step_size(delta_G);
+  n_outer_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*outer_it));
+  std::cout << " n_outer_iter: " << n_outer_iter << std::endl;
+
+}
+
 void ParaReal_Root::set_inner_step_size(const double step_size)
 {
     assert(n_mpi_processes != 0);
@@ -90,34 +99,10 @@ void ParaReal_Root::set_inner_step_size(const double step_size)
     gf_F.set_step_size(delta_F);
     n_inner_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*step_size));
     std::cout << " n_inner_iter: " << n_inner_iter << std::endl;
-    //n_inner_iter = inner_it;
-    //delta_F = std::min(global_T/(n_mpi_processes*n_inner_iter), 5.0);
-    //gf_F.set_step_size(delta_F);
 }
 
-void ParaReal_Root::set_outer_step_size(const double outer_it)
+void ParaReal_Root::run(const unsigned int n_pr_iter)
 {
-  assert(n_mpi_processes != 0);
-
-  //delta_G = std::min(global_T/(n_mpi_processes*outer_it), 20.0);
-  //gf_G.set_step_size(delta_G);
-  delta_G = outer_it;
-  gf_G.set_step_size(delta_G);
-  n_outer_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*outer_it));
-  std::cout << " n_outer_iter: " << n_outer_iter << std::endl;
-  /*
-  for (unsigned int i=0; i<n_mpi_processes; i++)
-    outer_time_vector.push_back(i*delta_G*outer_it);
-  outer_time_vector.push_back(global_T);
-  */
-}
-
-void ParaReal_Root::run(const double T, const unsigned int n_pr_iter)
-{
-  set_final_time(T);
-
-  //set_inner_step_size();
-  //set_outer_step_size();
 
   std::cout << "Outer step: " << delta_G << std::endl;
   std::cout << "Inner step: " << delta_F << std::endl;
@@ -126,7 +111,6 @@ void ParaReal_Root::run(const double T, const unsigned int n_pr_iter)
   // Initialization
   for (unsigned int i=0; i<n_mpi_processes; i++)
   {
-    // NB: We are assuming initial conditions equal all along the n initial points (no inner gf)
     gf_G.run(n_outer_iter);
 
     Vector<double> y = gf_G.get_y_vec();
@@ -213,11 +197,10 @@ public:
 
   ParaReal_Rank_n();
   void set_inner_step_size(const double step_size=0.1);
-  virtual void run(const double T, const unsigned int n_pr_iter) override;
+  virtual void run(const unsigned int n_pr_iter) override;
 
 private:
 
-  //virtual void set_step_size(const unsigned int inner_it=20) override
   double                      delta_F;
 
   GradientFlow                gf_F;
@@ -230,30 +213,18 @@ ParaReal_Rank_n::ParaReal_Rank_n()
 :     gf_F()
 {}
 
-/*
-void ParaReal_Rank_n::set_step_size(const unsigned int inner_it)
-{
-  n_inner_iter = inner_it;
-  delta_F = global_T/(n_mpi_processes*n_inner_iter);
-  gf_F.set_step_size(delta_F);
-}*/
 void ParaReal_Rank_n::set_inner_step_size(const double step_size)
 {
-    assert(n_mpi_processes != 0);
+      assert(n_mpi_processes != 0);
 
-    delta_F = step_size;
-    gf_F.set_step_size(delta_F);
-    n_inner_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*step_size));
-    std::cout << "delta_F: " << delta_F << std::endl;
-    //n_inner_iter = inner_it;
-    //delta_F = std::min(global_T/(n_mpi_processes*n_inner_iter), 5.0);
-    //gf_F.set_step_size(delta_F);
+      delta_F = step_size;
+      gf_F.set_step_size(delta_F);
+      n_inner_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*step_size));
+      std::cout << " n_inner_iter: " << n_inner_iter << std::endl;
 }
 
-void ParaReal_Rank_n::run(const double T, const unsigned int n_pr_iter)
+void ParaReal_Rank_n::run(const unsigned int n_pr_iter)
 {
-  set_final_time(T);
-  //set_inner_step_size();
 
   for (unsigned int it=0; it < n_pr_iter; it++)
   {

@@ -9,10 +9,8 @@ public:
 
   GradientFlow();
 
-  //unsigned int get_vectors_dimension() const { return dim_vec; };
   const Vector<double>& get_y_vec() const { return y_vec; };
   const Vector<double>& get_u_vec() const { return u_vec; };
-  //const std::tuple<Vector<double>, Vector<double>>& get_vectors() const { return std::make_tuple(y_vec, u_vec); };
   void set_initial_vectors(const Vector<double>& y0, const Vector<double>& u0);
   void set_step_size(const double step_size);
   void run(const unsigned int n_iter=1);
@@ -23,10 +21,7 @@ private:
 
   void initialize_dimensions();
   void vectors_iteration_step();
-  void Adam_learning_rate();
-  void momentum();
-  double evaluate_J();
-  void output_convergence_plots(const std::vector<double>& J_vec, const std::vector<double>& phi1_norm, const std::vector<double>& phi2_norm) const;
+  //void output_convergence_plots(const std::vector<double>& J_vec, const std::vector<double>& phi1_norm, const std::vector<double>& phi2_norm) const;
 
   LinearSystem          linear_system;
 
@@ -69,6 +64,11 @@ void GradientFlow::set_initial_vectors(const Vector<double>& y0, const Vector<do
   linear_system.update_vectors(y_vec,u_vec);
 }
 
+void GradientFlow::set_step_size(const double step_size)
+{
+  h = step_size;
+}
+
 
 void GradientFlow::vectors_iteration_step()
 {
@@ -87,47 +87,14 @@ void GradientFlow::vectors_iteration_step()
 void GradientFlow::run(const unsigned int n_iter)
 {
   unsigned int k = 0;
-  Vector<double>   g(dim_vec);
-
 
   while (k < n_iter)
   {
     vectors_iteration_step();
-    g = linear_system.get_g();
-    //std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << g.l2_norm() << std::endl;
-
+    //std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << linear_system.evaluate_g() << std::endl;
     k++;
   }
-  /*
-  //while (k_iter == 0 or (phi1.l2_norm() > 1e-3 and phi2.l2_norm() > 1e-3))
-  while (k_iter < n_iter)
-  {
-    linear_system.output_result_vectors();
-    vectors_iteration_step();
-    J_vec.push_back(linear_system.evaluate_J());
-    phi1_norm.push_back(phi1.l2_norm());
-    phi2_norm.push_back(phi2.l2_norm());
-    g = linear_system.get_g();
-    std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << g.l2_norm() << std::endl;
 
-    if (k_iter%100 == 0)
-      linear_system.output_result_vectors();
-    //if (J_vec[k_iter] < 0.9896885818)
-    //  h = 0.01;
-
-    //std::cout << "norm phi1: " << phi1.l2_norm() << std::endl;
-    //std::cout << "norm phi2: " << phi2.l2_norm() << std::endl;
-    k_iter++;
-  }
-
-  std::cout << "norm phi1: " << phi1.l2_norm() << std::endl;
-  std::cout << "norm phi2: " << phi2.l2_norm() << std::endl;
-
-  linear_system.update_vectors(y_vec,u_vec);
-  linear_system.output_result_vectors();
-
-  output_convergence_plots(J_vec, phi1_norm, phi2_norm);
-  */
 }
 
 void GradientFlow::output_iteration_results() const
@@ -135,16 +102,13 @@ void GradientFlow::output_iteration_results() const
   std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << linear_system.evaluate_g() << std::endl;
 }
 
-void GradientFlow::set_step_size(const double step_size)
-{
-  h = step_size;
-}
 
 void GradientFlow::output_results_vectors() const
 {
   linear_system.output_result_vectors();
 }
 
+/*
 void GradientFlow::output_convergence_plots(const std::vector<double>& J_vec, const std::vector<double>& phi1_norm, const std::vector<double>& phi2_norm) const
 {
   std::ofstream file;
@@ -168,7 +132,7 @@ void GradientFlow::output_convergence_plots(const std::vector<double>& J_vec, co
       file << iter << " " << phi2_norm[iter] << std::endl;
   }
   file.close();
-  /*
+
   Gnuplot gp;
   gp << "set terminal png " << std::endl;
   gp << "set grid" << std::endl;
@@ -178,5 +142,6 @@ void GradientFlow::output_convergence_plots(const std::vector<double>& J_vec, co
   gp << "set multiplot layout 1,2" << std::endl;
   gp << "plot 'J_evaluation.dat' with lp lw 0.5 title 'Evaluation Loss Function J'" << std::endl;
   gp << "unset multiplot" << std::endl;
-*/
+
 }
+*/

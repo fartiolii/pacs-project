@@ -11,21 +11,23 @@ int main(int argc, char **argv)
 
     double T(20000); //T(120000);
     unsigned int n_pr_it = 3;
+    double inner_step_size = 0.5;
+    double outer_step_size = 2.0;
 
     if (this_mpi_process == 0)
     {
       ParaReal_Root pr;
       pr.set_final_time(T);
-      pr.set_outer_step_size(2.0);
-      pr.set_inner_step_size(0.5);
-      pr.run(T, n_pr_it);
+      pr.set_outer_step_size(outer_step_size);
+      pr.set_inner_step_size(inner_step_size);
+      pr.run(n_pr_it);
     }
     else
     {
       ParaReal_Rank_n pr;
       pr.set_final_time(T);
-      pr.set_inner_step_size(0.5);
-      pr.run(T, n_pr_it);
+      pr.set_inner_step_size(inner_step_size);
+      pr.run(n_pr_it);
     }
 
 
