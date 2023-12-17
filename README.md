@@ -13,6 +13,13 @@ cd candi
 ./candi.sh
 ```
 
+# Cloning the repository
+This repository can be cloned as follows:
+```
+git clone https://github.com/fartiolii/pacs-project.git
+cd pacs-project
+```
+
 # Compile and run the test
 ```
 cmake -DDEAL_II_DIR=/path/to/dealii .
