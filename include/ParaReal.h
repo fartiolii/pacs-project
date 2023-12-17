@@ -6,6 +6,12 @@
 
 using namespace dealii;
 
+struct VectorTypes{
+    using TupleType = std::tuple<Vector<double>, Vector<double>>;
+    using VectorTupleType = std::vector<TupleType>;
+    using FutureTupleType = Utilities::MPI::Future<TupleType>;
+};
+
 const unsigned int root = 0;
 
 class ParaRealBase
@@ -45,6 +51,8 @@ class ParaReal_Root: public ParaRealBase
 {
 public:
 
+  using VT = VectorTypes;
+
   ParaReal_Root();
   void set_outer_step_size(const double outer_it=1.0);
   void set_inner_step_size(const double step_size=0.1);
@@ -52,20 +60,18 @@ public:
 
 private:
 
-  void outer_loop();
+  double                            delta_G;
+  double                            delta_F;
 
-  double                      delta_G;
-  double                      delta_F;
+  GradientFlow                      gf_F;
+  GradientFlow                      gf_G;
 
-  GradientFlow                gf_F;
-  GradientFlow                gf_G;
+  unsigned int                      n_outer_iter;
 
-  unsigned int                n_outer_iter;
-
-  std::vector<std::tuple<Vector<double>, Vector<double>>> F_vectors; //to receive
-  std::vector<std::tuple<Vector<double>, Vector<double>>> G_old_vectors;
-  std::vector<std::tuple<Vector<double>, Vector<double>>> G_new_vectors;
-  std::vector<std::tuple<Vector<double>, Vector<double>>> new_yu_vectors; //to send
+  VT::VectorTupleType               F_vectors; //to receive
+  VT::VectorTupleType               G_old_vectors;
+  VT::VectorTupleType               G_new_vectors;
+  VT::VectorTupleType               new_yu_vectors; //to send
 
 };
 
@@ -103,10 +109,6 @@ void ParaReal_Root::set_inner_step_size(const double step_size)
 
 void ParaReal_Root::run(const unsigned int n_pr_iter)
 {
-
-  std::cout << "Outer step: " << delta_G << std::endl;
-  std::cout << "Inner step: " << delta_F << std::endl;
-
   std::cout << "Initialization" << std::endl;
   // Initialization
   for (unsigned int i=0; i<n_mpi_processes; i++)
@@ -143,7 +145,7 @@ void ParaReal_Root::run(const unsigned int n_pr_iter)
       // Receive F operator from all ranks
       for (unsigned int rank=1; rank<n_mpi_processes; rank++)
       {
-        Utilities::MPI::Future<std::tuple<Vector<double>, Vector<double>>> future = Utilities::MPI::irecv<std::tuple<Vector<double>, Vector<double>>>(mpi_communicator, rank);
+        VT::FutureTupleType future = Utilities::MPI::irecv<VT::TupleType>(mpi_communicator, rank);
         F_vectors[rank] = future.get();
       }
 
@@ -195,6 +197,8 @@ class ParaReal_Rank_n: public ParaRealBase
 {
 public:
 
+  using VT = VectorTypes;
+
   ParaReal_Rank_n();
   void set_inner_step_size(const double step_size=0.1);
   virtual void run(const unsigned int n_pr_iter) override;
@@ -205,8 +209,8 @@ private:
 
   GradientFlow                gf_F;
 
-  std::tuple<Vector<double>, Vector<double>> initial_time_vectors; //to receive
-  std::tuple<Vector<double>, Vector<double>> final_time_vectors; //to send
+  VT::TupleType               initial_time_vectors; //to receive
+  VT::TupleType               final_time_vectors; //to send
 };
 
 ParaReal_Rank_n::ParaReal_Rank_n()
@@ -229,7 +233,7 @@ void ParaReal_Rank_n::run(const unsigned int n_pr_iter)
   for (unsigned int it=0; it < n_pr_iter; it++)
   {
       // Receive initial conditions from root
-      Utilities::MPI::Future<std::tuple<Vector<double>, Vector<double>>> future = Utilities::MPI::irecv<std::tuple<Vector<double>, Vector<double>>>(mpi_communicator, root);
+      VT::FutureTupleType future = Utilities::MPI::irecv<VT::TupleType>(mpi_communicator, root);
       initial_time_vectors = future.get();
 
       // Set received vectors as initial conditions of inner gf
