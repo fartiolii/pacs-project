@@ -1,3 +1,4 @@
+///@note: include path should be absolute
 #include "include/ParaRealAlternative.h"
 
 using namespace dealii;

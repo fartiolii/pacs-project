@@ -3,6 +3,8 @@
 using namespace dealii;
 
 
+///@note: read parameters from a file for more flexibility
+
 int main(int argc, char **argv)
 {
     Utilities::MPI::MPI_InitFinalize  mpi_initialization(argc, argv);

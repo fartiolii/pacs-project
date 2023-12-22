@@ -1,5 +1,7 @@
 #include "GradientFlowBase.h"
 
+///@note: split non-template object into header and source
+
 using namespace dealii;
 
 class GradientFlowEuler: public GradientFlowBase
@@ -100,6 +102,7 @@ void GradientFlowAdam::vectors_iteration_step()
 
   Vector<double> temp(dim_vec);
   for (unsigned int i=0; i<dim_vec; i++)
+    ///@note: math functions should always have explicit namespace
     temp(i) = m_hat(i)/(sqrt(v_hat(i))+eps);
 
   y_vec.add(alpha, temp);

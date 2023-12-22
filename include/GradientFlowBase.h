@@ -1,8 +1,12 @@
 #include "LinearSystem.h"
 //#include "gnuplot-iostream.h"
 
+///@note: split non-template object into header and source
+
+
 using namespace dealii;
 
+///@note: constexpr?
 const double phi1_threshold = 1e-6;
 const double phi2_threshold = 1e-7;
 const double g_threshold = 1e-3;
