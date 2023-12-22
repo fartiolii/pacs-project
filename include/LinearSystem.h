@@ -47,6 +47,7 @@
 
 using namespace dealii;
 
+template <int dim>
 class LinearSystem
 {
 public:
@@ -86,17 +87,17 @@ private:
 
 
 
-  Triangulation<2> triangulation;
+  Triangulation<dim> triangulation;
 
-  const MappingFE<2>     mapping;
-  const FE_SimplexP<2>   fe;
+  const MappingFE<dim>     mapping;
+  const FE_SimplexP<dim>   fe;
 
-  const FESystem<2>      fe_system;
+  const FESystem<dim>      fe_system;
 
-  const QGaussSimplex<2> quadrature_formula;
+  const QGaussSimplex<dim> quadrature_formula;
 
-  DoFHandler<2>          dof_handler;
-  DoFHandler<2>          dof_handler_system;
+  DoFHandler<dim>          dof_handler;
+  DoFHandler<dim>          dof_handler_system;
 
   unsigned int          prob_size;
   double                alpha=0.1;
@@ -124,10 +125,10 @@ private:
 
 };
 
-
-LinearSystem::LinearSystem()
+template <int dim>
+LinearSystem<dim>::LinearSystem()
   :
-    mapping(FE_SimplexP<2>(1))
+    mapping(FE_SimplexP<dim>(1))
   , fe(1)
   , fe_system(fe, 3)
   , quadrature_formula(fe.degree+1)
@@ -140,12 +141,19 @@ LinearSystem::LinearSystem()
 }
 
 
-
-void LinearSystem::make_grid()
+template <int dim>
+void LinearSystem<dim>::make_grid()
 {
   triangulation.clear();
-  GridIn<2>(triangulation).read("tri.msh");
-  triangulation.refine_global(5);
+  
+  if (dim == 2)
+    GridIn<dim>(triangulation).read("mesh/tri.msh");
+  else if(dim == 3)
+    GridIn<dim>(triangulation).read("mesh/tet.msh");
+  else
+    std::cerr << "Mesh is available only for dim 2 or 3!" << std::endl;
+
+  triangulation.refine_global(4);
 
 
   std::ofstream out("grid-LinSys.svg");
@@ -154,8 +162,8 @@ void LinearSystem::make_grid()
 }
 
 
-
-void LinearSystem::setup_system()
+template <int dim>
+void LinearSystem<dim>::setup_system()
 {
   dof_handler.distribute_dofs(fe);
   dof_handler_system.distribute_dofs(fe_system);
@@ -181,7 +189,8 @@ void LinearSystem::setup_system()
   yd_vec.add(yd);
 }
 
-void LinearSystem::initialize_dimensions()
+template <int dim>
+void LinearSystem<dim>::initialize_dimensions()
 {
   assert(prob_size != 0);
   y_vec.reinit(prob_size);
@@ -198,12 +207,13 @@ void LinearSystem::initialize_dimensions()
   phi2_vec.reinit(prob_size);
 }
 
-void LinearSystem::assemble_system()
+template <int dim>
+void LinearSystem<dim>::assemble_system()
 {
 
-  QGauss<2> quadrature_formula(fe.degree + 1);
+  QGauss<dim> quadrature_formula(fe.degree + 1);
 
-  FEValues<2> fe_values(fe,
+  FEValues<dim> fe_values(fe,
                         quadrature_formula,
                         update_values | update_gradients | update_JxW_values);
 
@@ -260,7 +270,7 @@ void LinearSystem::assemble_system()
   std::map<types::global_dof_index, double> boundary_values;
   VectorTools::interpolate_boundary_values(dof_handler,
                                            0,
-                                           Functions::ZeroFunction<2>(),
+                                           Functions::ZeroFunction<dim>(),
                                            boundary_values);
 
   Vector<double> temp_rhs(prob_size);
@@ -277,8 +287,8 @@ void LinearSystem::assemble_system()
 
 }
 
-
-void LinearSystem::initialize_vectors_y_u()
+template <int dim>
+void LinearSystem<dim>::initialize_vectors_y_u()
 {
   y_vec.add(0.01);
   u_vec.add(0.01);
@@ -295,7 +305,8 @@ void LinearSystem::initialize_vectors_y_u()
 }
 
 
-void LinearSystem::setup_linear_system()
+template <int dim>
+void LinearSystem<dim>::setup_linear_system()
 {
   make_grid();
   setup_system();
@@ -306,7 +317,8 @@ void LinearSystem::setup_linear_system()
 }
 
 
-void LinearSystem::set_phi()
+template <int dim>
+void LinearSystem<dim>::set_phi()
 {
   //auto phi = [] (double y) { return exp(y);};
   //auto grad_phi = [] (double y) { return exp(y);};
@@ -334,7 +346,8 @@ void LinearSystem::set_phi()
 
 }
 
-void LinearSystem::assemble_Kstar()
+template <int dim>
+void LinearSystem<dim>::assemble_Kstar()
 {
       set_phi();
 
@@ -364,7 +377,8 @@ void LinearSystem::assemble_Kstar()
       }
 }
 
-void LinearSystem::set_global_sparsity_pattern()
+template <int dim>
+void LinearSystem<dim>::set_global_sparsity_pattern()
 {
     DynamicSparsityPattern global_sp(dof_handler_system.n_dofs());
 
@@ -390,7 +404,8 @@ void LinearSystem::set_global_sparsity_pattern()
 
 }
 
-void LinearSystem::assemble_A()
+template <int dim>
+void LinearSystem<dim>::assemble_A()
 {
 
   A_matrix.reinit(global_sparsity_pattern);
@@ -430,7 +445,8 @@ void LinearSystem::assemble_A()
   }
 }
 
-void LinearSystem::assemble_rhs()
+template <int dim>
+void LinearSystem<dim>::assemble_rhs()
 {
   Vector<double> grad_Jy(prob_size);
   Vector<double> grad_Ju(prob_size);
@@ -476,7 +492,8 @@ void LinearSystem::assemble_rhs()
   g.extract_subvector_to(indices.begin(), indices.end(), it);
 }
 
-void LinearSystem::test_Kstar()
+template <int dim>
+void LinearSystem<dim>::test_Kstar()
 {
   assemble_Kstar();
   Vector<double> sol_Kstar(prob_size);
@@ -492,7 +509,7 @@ void LinearSystem::test_Kstar()
   std::map<types::global_dof_index, double> boundary_values;
   VectorTools::interpolate_boundary_values(dof_handler,
                                            0,
-                                           Functions::ZeroFunction<2>(),
+                                           Functions::ZeroFunction<dim>(),
                                            boundary_values);
 
   MatrixTools::apply_boundary_values(boundary_values,
@@ -504,7 +521,7 @@ void LinearSystem::test_Kstar()
   SolverCG<Vector<double>> solver(solver_control);
   solver.solve(K_star, sol_Kstar, test_rhs, PreconditionIdentity());
 
-  DataOut<2> data_out;
+  DataOut<dim> data_out;
   data_out.attach_dof_handler(dof_handler);
   data_out.add_data_vector(sol_Kstar, "solution_test_Kstar");
   data_out.build_patches();
@@ -515,7 +532,8 @@ void LinearSystem::test_Kstar()
 
 }
 
-void LinearSystem::solve()
+template <int dim>
+void LinearSystem<dim>::solve()
 {
   // Applying boundary values to phi1 and phi2
   FEValuesExtractors::Vector phi(0);
@@ -525,7 +543,7 @@ void LinearSystem::solve()
   std::map<types::global_dof_index, double> boundary_values;
   VectorTools::interpolate_boundary_values(dof_handler_system,
                                            0,
-                                           Functions::ZeroFunction<2>(3),
+                                           Functions::ZeroFunction<dim>(3),
                                            boundary_values,
                                            phi_mask);
 
@@ -548,9 +566,10 @@ void LinearSystem::solve()
 
 }
 
-void LinearSystem::output_result_vectors() const
+template <int dim>
+void LinearSystem<dim>::output_result_vectors() const
 {
-  DataOut<2> data_out;
+  DataOut<dim> data_out;
 
   data_out.attach_dof_handler(dof_handler);
   data_out.add_data_vector(y_vec, "y_vec");
@@ -559,7 +578,7 @@ void LinearSystem::output_result_vectors() const
   std::ofstream output("y_vec.vtk");
   data_out.write_vtk(output);
 
-  DataOut<2> data_out_u;
+  DataOut<dim> data_out_u;
 
   data_out_u.attach_dof_handler(dof_handler);
   data_out_u.add_data_vector(u_vec, "u_vec");
@@ -569,7 +588,8 @@ void LinearSystem::output_result_vectors() const
   data_out_u.write_vtk(output_u);
 }
 
-void LinearSystem::update_vectors(const Vector<double> &y, const Vector<double> &u)
+template <int dim>
+void LinearSystem<dim>::update_vectors(const Vector<double> &y, const Vector<double> &u)
 {
   assert(y.size() == prob_size);
   assert(u.size() == prob_size);
@@ -577,7 +597,8 @@ void LinearSystem::update_vectors(const Vector<double> &y, const Vector<double> 
   u_vec=u;
 }
 
-void LinearSystem::solve_system()
+template <int dim>
+void LinearSystem<dim>::solve_system()
 {
   assemble_Kstar();
   assemble_A();
@@ -585,7 +606,8 @@ void LinearSystem::solve_system()
   solve();
 }
 
-double LinearSystem::evaluate_J() const
+template <int dim>
+double LinearSystem<dim>::evaluate_J() const
 {
   double J;
 
@@ -603,7 +625,8 @@ double LinearSystem::evaluate_J() const
   return J;
 }
 
-double LinearSystem::evaluate_g() const
+template <int dim>
+double LinearSystem<dim>::evaluate_g() const
 {
   Vector<double> g(prob_size);
   Vector<double> temp(prob_size);
