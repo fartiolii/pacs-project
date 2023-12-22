@@ -145,7 +145,7 @@ void LinearSystem::make_grid()
 {
   triangulation.clear();
   GridIn<2>(triangulation).read("tri.msh");
-  triangulation.refine_global(3);
+  triangulation.refine_global(5);
 
 
   std::ofstream out("grid-LinSys.svg");

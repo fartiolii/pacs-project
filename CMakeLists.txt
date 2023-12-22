@@ -1,8 +1,8 @@
 ##
-#  CMake script 
+#  CMake script
 ##
 
-set(TARGET "test")
+set(TARGET "test_alternative")
 
 
 file(GLOB_RECURSE TARGET_INC  "include/*.h")
@@ -10,7 +10,7 @@ file(GLOB_RECURSE TARGET_INC  "include/*.h")
 set(TARGET_SRC
   ${TARGET}.cc
   )
-  
+
 
 cmake_minimum_required(VERSION 3.13.4)
 
@@ -28,4 +28,3 @@ endif()
 deal_ii_initialize_cached_variables()
 project(${TARGET})
 deal_ii_invoke_autopilot()
-

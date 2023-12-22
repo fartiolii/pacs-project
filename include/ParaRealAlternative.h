@@ -25,7 +25,6 @@ public:
   ParaRealBase();
   virtual void run() = 0;
   void set_num_inner_it(const unsigned int n_it);
-  void set_final_time(const double T);
 
 protected:
 
@@ -37,8 +36,6 @@ protected:
   const unsigned int          this_mpi_process;
 
   unsigned int                n_inner_iter;
-
-  double                      global_T;
 
   bool                        converged;
 
@@ -75,10 +72,6 @@ void ParaRealBase::set_num_inner_it(const unsigned int n_it)
     std::cout << " n_inner_iter: " << n_inner_iter << std::endl;
 }
 
-void ParaRealBase::set_final_time(const double T)
-{
-    global_T = T;
-}
 
 
 class ParaReal_Root: public ParaRealBase
@@ -124,16 +117,21 @@ ParaReal_Root::ParaReal_Root(const GFStepType OuterGFMethod, const GFStepType In
     , converged_vec(n_mpi_processes, false)
 {}
 
+
+
 void ParaReal_Root::set_outer_step_size(const double outer_it)
 {
   assert(n_mpi_processes != 0);
 
   delta_G = outer_it;
   gf_G->set_step_size(delta_G);
-  n_outer_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*outer_it));
+
+  // New method: we just make one iteration of the coarse operator
+  //n_outer_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*outer_it));
+  n_outer_iter = 1;
   std::cout << " n_outer_iter: " << n_outer_iter << std::endl;
 
-  }
+}
 
 void ParaReal_Root::set_inner_step_size(const double step_size)
 {
@@ -141,10 +139,7 @@ void ParaReal_Root::set_inner_step_size(const double step_size)
 
     delta_F = step_size;
     gf_F->set_step_size(delta_F);
-    n_inner_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*step_size));
-    std::cout << " n_inner_iter: " << n_inner_iter << std::endl;
 }
-
 
 bool ParaReal_Root::check_convergence()
 {
@@ -285,12 +280,8 @@ ParaReal_Rank_n::ParaReal_Rank_n(const GFStepType InnerGFMethod)
 
 void ParaReal_Rank_n::set_inner_step_size(const double step_size)
 {
-      assert(n_mpi_processes != 0);
-
       delta_F = step_size;
       gf_F->set_step_size(delta_F);
-      n_inner_iter = static_cast<unsigned int>(global_T/(n_mpi_processes*step_size));
-      std::cout << " n_inner_iter: " << n_inner_iter << std::endl;
 }
 
 void ParaReal_Rank_n::run()

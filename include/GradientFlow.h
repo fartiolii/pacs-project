@@ -1,147 +1,127 @@
-#include "LinearSystem.h"
-//#include "gnuplot-iostream.h"
+#include "GradientFlowBase.h"
 
 using namespace dealii;
 
-class GradientFlow
+class GradientFlowEuler: public GradientFlowBase
 {
 public:
 
-  GradientFlow();
-
-  const Vector<double>& get_y_vec() const { return y_vec; };
-  const Vector<double>& get_u_vec() const { return u_vec; };
-  void set_initial_vectors(const Vector<double>& y0, const Vector<double>& u0);
-  void set_step_size(const double step_size);
-  void run(const unsigned int n_iter=1);
-  void output_results_vectors() const;
-  void output_iteration_results() const;
+  GradientFlowEuler();
+  void set_step_size(const double step_size) override;
 
 private:
 
-  void initialize_dimensions();
-  void vectors_iteration_step();
-  //void output_convergence_plots(const std::vector<double>& J_vec, const std::vector<double>& phi1_norm, const std::vector<double>& phi2_norm) const;
+  void vectors_iteration_step() override;
 
-  LinearSystem          linear_system;
-
-  unsigned int          dim_vec;
-
-  double                h=1;
-
-  Vector<double>        y_vec;
-  Vector<double>        u_vec;
-
-  Vector<double>        phi1;
-  Vector<double>        phi2;
+  double                step_size=1;
 
 };
 
-GradientFlow::GradientFlow()
-:
-  linear_system()
-  ,dim_vec(linear_system.get_vector_size())
+GradientFlowEuler::GradientFlowEuler()
+{}
+
+void GradientFlowEuler::set_step_size(const double sz)
 {
-  initialize_dimensions();
+  step_size = sz;
+}
+
+void GradientFlowEuler::vectors_iteration_step()
+{
+  y_vec.add(step_size, phi1);
+  u_vec.add(step_size, phi2);
+}
+
+class GradientFlowAdam: public GradientFlowBase
+{
+public:
+
+  GradientFlowAdam();
+  void set_step_size(const double step_size) override;
+
+private:
+
+  void initialize_dimension_aux_vectors();
+  void vectors_iteration_step() override;
+
+  double                beta1=0.9;
+  double                beta2=0.999;
+  double                eps=1e-8;
+  double                alpha=0.001;
+
+  //Auxiliary vectors required for the Adam vector update
+  Vector<double>        m_y;
+  Vector<double>        v_y;
+
+  Vector<double>        m_u;
+  Vector<double>        v_u;
+
+  Vector<double>        y_last;
+  Vector<double>        u_last;
+
+};
+
+GradientFlowAdam::GradientFlowAdam()
+{
+  initialize_dimension_aux_vectors();
+}
+
+void GradientFlowAdam::set_step_size(const double step_size)
+{
+  alpha = step_size;
 }
 
 
-void GradientFlow::initialize_dimensions()
+void GradientFlowAdam::initialize_dimension_aux_vectors()
 {
-  y_vec.reinit(dim_vec);
-  u_vec.reinit(dim_vec);
-  phi1.reinit(dim_vec);
-  phi2.reinit(dim_vec);
+  m_y.reinit(dim_vec);
+  v_y.reinit(dim_vec);
+  m_u.reinit(dim_vec);
+  v_u.reinit(dim_vec);
+  y_last.reinit(dim_vec);
+  u_last.reinit(dim_vec);
 }
 
-void GradientFlow::set_initial_vectors(const Vector<double>& y0, const Vector<double>& u0)
+void GradientFlowAdam::vectors_iteration_step()
 {
-  assert(y0.size() == dim_vec);
-  assert(u0.size() == dim_vec);
-  y_vec = y0;
-  u_vec = u0;
 
-  linear_system.update_vectors(y_vec,u_vec);
-}
+  m_y *= beta1;
+  m_y.add(1-beta1, phi1);
 
-void GradientFlow::set_step_size(const double step_size)
-{
-  h = step_size;
-}
+  Vector<double> phi1_squared(phi1);
+  phi1_squared.scale(phi1);
+  v_y *= beta2;
+  v_y.add(1-beta2, phi1_squared);
 
+  Vector<double> m_hat(m_y);
+  Vector<double> v_hat(v_y);
 
-void GradientFlow::vectors_iteration_step()
-{
-  linear_system.solve_system();
+  m_hat /= (1-beta1);
+  v_hat /= (1-beta2);
 
-  phi1 = linear_system.get_phi1();
-  phi2 = linear_system.get_phi2();
+  Vector<double> temp(dim_vec);
+  for (unsigned int i=0; i<dim_vec; i++)
+    temp(i) = m_hat(i)/(sqrt(v_hat(i))+eps);
 
-  y_vec.add(h, phi1);
-  u_vec.add(h, phi2);
+  y_vec.add(alpha, temp);
 
-  linear_system.update_vectors(y_vec,u_vec);
-}
+  m_u *= beta1;
+  m_u.add(1-beta1, phi2);
 
+  Vector<double> phi2_squared(phi2);
+  phi2_squared.scale(phi2);
+  v_u *= beta2;
+  v_u.add(1-beta2, phi2_squared);
 
-void GradientFlow::run(const unsigned int n_iter)
-{
-  unsigned int k = 0;
+  Vector<double> m_hat_u(m_u);
+  Vector<double> v_hat_u(v_u);
 
-  while (k < n_iter)
-  {
-    vectors_iteration_step();
-    //std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << linear_system.evaluate_g() << std::endl;
-    k++;
-  }
+  m_hat_u /= (1-beta1);
+  v_hat_u /= (1-beta2);
 
-}
+  Vector<double> temp_u(dim_vec);
+  for (unsigned int i=0; i<dim_vec; i++)
+    temp_u(i) = m_hat_u(i)/(sqrt(v_hat_u(i))+eps);
 
-void GradientFlow::output_iteration_results() const
-{
-  std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << linear_system.evaluate_g() << std::endl;
-}
-
-
-void GradientFlow::output_results_vectors() const
-{
-  linear_system.output_result_vectors();
-}
-
-/*
-void GradientFlow::output_convergence_plots(const std::vector<double>& J_vec, const std::vector<double>& phi1_norm, const std::vector<double>& phi2_norm) const
-{
-  std::ofstream file;
-  file.open("J_evaluation.dat");
-  for (unsigned int iter=0; iter<J_vec.size(); iter++)
-  {
-      file << iter << " " << J_vec[iter] << std::endl;
-  }
-  file.close();
-
-  file.open("phi1_norm.dat");
-  for (unsigned int iter=0; iter<phi1_norm.size(); iter++)
-  {
-      file << iter << " " << phi1_norm[iter] << std::endl;
-  }
-  file.close();
-
-  file.open("phi2_norm.dat");
-  for (unsigned int iter=0; iter<phi2_norm.size(); iter++)
-  {
-      file << iter << " " << phi2_norm[iter] << std::endl;
-  }
-  file.close();
-
-  Gnuplot gp;
-  gp << "set terminal png " << std::endl;
-  gp << "set grid" << std::endl;
-  gp << "set output 'J_eval.png' " << std::endl;
-  gp << "set ylabel 'n_iter'" << std::endl;
-  gp << "set xlabel 'J'" << std::endl;
-  gp << "set multiplot layout 1,2" << std::endl;
-  gp << "plot 'J_evaluation.dat' with lp lw 0.5 title 'Evaluation Loss Function J'" << std::endl;
-  gp << "unset multiplot" << std::endl;
+  u_vec.add(alpha, temp_u);
 
 }
-*/
