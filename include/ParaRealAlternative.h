@@ -2,6 +2,8 @@
 #include <deal.II/base/mpi.h>
 #include <deal.II/base/conditional_ostream.h>
 
+///@note: split non-template object into header and source
+
 //#include "gnuplot-iostream.h"
 
 using namespace dealii;

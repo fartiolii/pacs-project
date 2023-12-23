@@ -1,5 +1,7 @@
 #include "GradientFlowBase.h"
 
+///@note: split non-template object into header and source
+
 using namespace dealii;
 
 template<int dim>
@@ -98,9 +100,12 @@ void GradientFlowAdam<dim>::vectors_iteration_step()
   m_hat /= (1-beta1);
   v_hat /= (1-beta2);
 
+
   Vector<double> temp(this->dim_vec);
   for (unsigned int i=0; i<this->dim_vec; i++)
+    ///@note: math functions should always have explicit namespace
     temp(i) = m_hat(i)/(std::sqrt(v_hat(i))+eps);
+
 
   this->y_vec.add(alpha, temp);
 

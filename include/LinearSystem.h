@@ -44,10 +44,15 @@
 #include <cmath>
 #include <memory>
 
+///@note: split non-template object into header and source
+
+
 
 using namespace dealii;
 
-template <int dim>
+
+///@note: is it worth it to make it template?
+template<int dim>
 class LinearSystem
 {
 public:
@@ -167,6 +172,7 @@ void LinearSystem<dim>::setup_system()
 {
   dof_handler.distribute_dofs(fe);
   dof_handler_system.distribute_dofs(fe_system);
+  ///@note: do not leave commented or unused code (in the final version, for now is fine)
   /*
   std::cout << "Number of degrees of freedom vector: " << dof_handler.n_dofs()
             << std::endl;

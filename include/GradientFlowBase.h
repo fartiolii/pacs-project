@@ -1,11 +1,17 @@
 #include "LinearSystem.h"
 //#include "gnuplot-iostream.h"
 
+///@note: split non-template object into header and source
+
+
 using namespace dealii;
 
+
+ ///@note: constexpr?
 constexpr double phi1_threshold = 1e-6;
 constexpr double phi2_threshold = 1e-6;
 //constexpr double g_threshold = 1e-3;
+
 
 enum class GFStepType {
     EULER,
