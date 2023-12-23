@@ -2,7 +2,7 @@
 #  CMake script
 ##
 
-set(TARGET "test_alternative")
+set(TARGET "test")
 
 
 file(GLOB_RECURSE TARGET_INC  "include/*.h")
@@ -25,6 +25,12 @@ if(NOT ${deal.II_FOUND})
     )
 endif()
 
+
+
 deal_ii_initialize_cached_variables()
 project(${TARGET})
+
+# Add include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 deal_ii_invoke_autopilot()

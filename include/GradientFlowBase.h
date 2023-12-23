@@ -6,16 +6,20 @@
 
 using namespace dealii;
 
-///@note: constexpr?
-const double phi1_threshold = 1e-6;
-const double phi2_threshold = 1e-7;
-const double g_threshold = 1e-3;
+
+ ///@note: constexpr?
+constexpr double phi1_threshold = 1e-6;
+constexpr double phi2_threshold = 1e-6;
+//constexpr double g_threshold = 1e-3;
+
 
 enum class GFStepType {
     EULER,
-    ADAM
+    ADAM,
+    RMSPROP
 };
 
+template <int dim>
 class GradientFlowBase
 {
 public:
@@ -39,21 +43,20 @@ protected:
 
   //void output_convergence_plots(const std::vector<double>& J_vec, const std::vector<double>& phi1_norm, const std::vector<double>& phi2_norm) const;
 
-  LinearSystem          linear_system;
+  LinearSystem<dim>          linear_system;
 
-  unsigned int          dim_vec;
+  unsigned int               dim_vec;
 
-  //double                h=1;
+  Vector<double>             y_vec;
+  Vector<double>             u_vec;
 
-  Vector<double>        y_vec;
-  Vector<double>        u_vec;
-
-  Vector<double>        phi1;
-  Vector<double>        phi2;
+  Vector<double>             phi1;
+  Vector<double>             phi2;
 
 };
 
-GradientFlowBase::GradientFlowBase()
+template <int dim>
+GradientFlowBase<dim>::GradientFlowBase()
 :
   linear_system()
   ,dim_vec(linear_system.get_vector_size())
@@ -61,8 +64,8 @@ GradientFlowBase::GradientFlowBase()
   initialize_dimensions();
 }
 
-
-void GradientFlowBase::initialize_dimensions()
+template <int dim>
+void GradientFlowBase<dim>::initialize_dimensions()
 {
   y_vec.reinit(dim_vec);
   u_vec.reinit(dim_vec);
@@ -70,13 +73,15 @@ void GradientFlowBase::initialize_dimensions()
   phi2.reinit(dim_vec);
 }
 
-bool GradientFlowBase::converged() const
+template <int dim>
+bool GradientFlowBase<dim>::converged() const
 {
-  return ((phi1.l2_norm() < phi1_threshold) && (phi2.l2_norm() < phi2_threshold) &&
-         (linear_system.evaluate_g() < g_threshold));
+  return (phi1.l2_norm() < phi1_threshold) && (phi2.l2_norm() < phi2_threshold);
+          //&&(linear_system.evaluate_g() < g_threshold));
 }
 
-void GradientFlowBase::set_initial_vectors(const Vector<double>& y0, const Vector<double>& u0)
+template <int dim>
+void GradientFlowBase<dim>::set_initial_vectors(const Vector<double>& y0, const Vector<double>& u0)
 {
   assert(y0.size() == dim_vec);
   assert(u0.size() == dim_vec);
@@ -87,7 +92,8 @@ void GradientFlowBase::set_initial_vectors(const Vector<double>& y0, const Vecto
 }
 
 
-void GradientFlowBase::descent_step()
+template <int dim>
+void GradientFlowBase<dim>::descent_step()
 {
   linear_system.solve_system();
 
@@ -100,7 +106,8 @@ void GradientFlowBase::descent_step()
 }
 
 
-void GradientFlowBase::run(const unsigned int n_iter)
+template <int dim>
+void GradientFlowBase<dim>::run(const unsigned int n_iter)
 {
   assert(n_iter > 0);
 
@@ -116,13 +123,15 @@ void GradientFlowBase::run(const unsigned int n_iter)
 
 }
 
-void GradientFlowBase::output_iteration_results() const
+template <int dim>
+void GradientFlowBase<dim>::output_iteration_results() const
 {
   std::cout << std::setprecision(11) << linear_system.evaluate_J() << " g: " << linear_system.evaluate_g() << std::endl;
 }
 
 
-void GradientFlowBase::output_results_vectors() const
+template <int dim>
+void GradientFlowBase<dim>::output_results_vectors() const
 {
   linear_system.output_result_vectors();
 }

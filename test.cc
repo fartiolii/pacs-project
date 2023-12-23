@@ -1,4 +1,4 @@
-#include "include/ParaReal.h"
+#include <ParaReal.h>
 
 using namespace dealii;
 
@@ -11,8 +11,9 @@ int main(int argc, char **argv)
     MPI_Comm mpi_communicator(MPI_COMM_WORLD);
     unsigned int this_mpi_process(Utilities::MPI::this_mpi_process(mpi_communicator));
 
+    constexpr int dim=2;
     double T(1500);
-    double inner_step_size = 0.5;
+    double inner_step_size = 1.0;
     double outer_step_size = 1.5;
 
     GFStepType outer_method(GFStepType::EULER);
@@ -20,7 +21,7 @@ int main(int argc, char **argv)
 
     if (this_mpi_process == 0)
     {
-      ParaReal_Root pr(outer_method, inner_method);
+      ParaReal_Root<dim> pr(outer_method, inner_method);
       pr.set_final_time(T);
       pr.set_outer_step_size(outer_step_size);
       pr.set_inner_step_size(inner_step_size);
@@ -28,7 +29,7 @@ int main(int argc, char **argv)
     }
     else
     {
-      ParaReal_Rank_n pr(inner_method);
+      ParaReal_Rank_n<dim> pr(inner_method);
       pr.set_final_time(T);
       pr.set_inner_step_size(inner_step_size);
       pr.run();
