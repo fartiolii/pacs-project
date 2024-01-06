@@ -46,7 +46,7 @@ private:
   void initialize_dimension_aux_vectors();
   void vectors_iteration_step() override;
 
-  double                beta1=0.9;
+  double                beta1=0.98;
   double                beta2=0.999;
   double                eps=1e-8;
   double                alpha=0.001;

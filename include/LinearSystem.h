@@ -90,12 +90,11 @@ private:
   void solve();
   void output_results() const;
 
-
-
   Triangulation<dim> triangulation;
 
-  const MappingFE<dim>     mapping;
-  const FE_SimplexP<dim>   fe;
+  //const MappingFE<dim>     mapping;
+  //const FE_SimplexP<dim>   fe;
+  const FE_Q<dim>           fe;
 
   const FESystem<dim>      fe_system;
 
@@ -105,8 +104,8 @@ private:
   DoFHandler<dim>          dof_handler_system;
 
   unsigned int          prob_size;
-  double                alpha=0.1;
-  double                gamma=0.5;
+  double                alpha=0.01;
+  double                gamma=1.0; //0.5;
   double                yd=1;
   SparsityPattern       sparsity_pattern;
   SparseMatrix<double>  stiffness_matrix;
@@ -133,8 +132,9 @@ private:
 template <int dim>
 LinearSystem<dim>::LinearSystem()
   :
-    mapping(FE_SimplexP<dim>(1))
-  , fe(1)
+    //mapping(FE_SimplexP<dim>(1))
+  //,
+    fe(1)
   , fe_system(fe, 3)
   , quadrature_formula(fe.degree+1)
   , dof_handler(triangulation)
@@ -149,16 +149,18 @@ LinearSystem<dim>::LinearSystem()
 template <int dim>
 void LinearSystem<dim>::make_grid()
 {
+  /*
   triangulation.clear();
-  
+
   if (dim == 2)
     GridIn<dim>(triangulation).read("mesh/tri.msh");
   else if(dim == 3)
     GridIn<dim>(triangulation).read("mesh/tet.msh");
   else
     std::cerr << "Mesh is available only for dim 2 or 3!" << std::endl;
-
-  triangulation.refine_global(4);
+  */
+  GridGenerator::hyper_cube(triangulation, -1, 1);
+  triangulation.refine_global(5);
 
 
   std::ofstream out("grid-LinSys.svg");
@@ -326,10 +328,10 @@ void LinearSystem<dim>::setup_linear_system()
 template <int dim>
 void LinearSystem<dim>::set_phi()
 {
-  //auto phi = [] (double y) { return exp(y);};
-  //auto grad_phi = [] (double y) { return exp(y);};
-  auto phi = [] (double y) { return exp(y)*y;};
-  auto grad_phi = [] (double y) { return (1+y)*exp(y);};
+  auto phi = [] (double y) { return exp(y);};
+  auto grad_phi = [] (double y) { return exp(y);};
+  //auto phi = [] (double y) { return exp(y)*y;};
+  //auto grad_phi = [] (double y) { return (1+y)*exp(y);};
   //auto phi = [] (double y) { return std::pow(y,3);};
   //auto grad_phi = [] (double y) { return 3*(y*y);};
 
@@ -562,6 +564,7 @@ void LinearSystem<dim>::solve()
   SolverControl                       solver_control(200000, 1e-6 * rhs_vec.l2_norm());
   SolverMinRes<Vector<double>>        solver(solver_control);
   solver.solve(A_matrix, solution_vec, rhs_vec, PreconditionIdentity());
+  //std::cout << "N iter to convergence: " << solver_control.last_step() << std::endl;
 
 
   std::vector<unsigned int> indices(prob_size);

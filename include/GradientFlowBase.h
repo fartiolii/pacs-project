@@ -8,8 +8,8 @@ using namespace dealii;
 
 
  ///@note: constexpr?
-constexpr double phi1_threshold = 1e-6;
-constexpr double phi2_threshold = 1e-6;
+constexpr double phi1_threshold = 1e-5;
+constexpr double phi2_threshold = 5*1e-4;
 //constexpr double g_threshold = 1e-3;
 
 
@@ -31,6 +31,7 @@ public:
   void set_initial_vectors(const Vector<double>& y0, const Vector<double>& u0);
   virtual void set_step_size(const double step_size) = 0;
   void run(const unsigned int n_iter=1);
+  void run_gf();
   bool converged() const;
   void output_results_vectors() const;
   void output_iteration_results() const;
@@ -119,6 +120,29 @@ void GradientFlowBase<dim>::run(const unsigned int n_iter)
     descent_step();
     k++;
   }
+  //std::cout << "phi1: " << phi1.l2_norm() << " phi2: " << phi2.l2_norm() << std::endl;
+
+}
+
+template <int dim>
+void GradientFlowBase<dim>::run_gf()
+{
+  descent_step(); // first iter
+  unsigned int k = 1; // iter counter
+
+  while (!converged())
+  {
+    descent_step();
+
+    if (k % 200 == 0){
+      output_iteration_results();
+      std::cout << "phi1: " << phi1.l2_norm() << " phi2: " << phi2.l2_norm() << std::endl;
+    }
+    k++;
+  }
+  std::cout << "Gradient Flow converged in k: " << k << " iterations" << std::endl;
+  output_iteration_results();
+  output_results_vectors();
   //std::cout << "phi1: " << phi1.l2_norm() << " phi2: " << phi2.l2_norm() << std::endl;
 
 }

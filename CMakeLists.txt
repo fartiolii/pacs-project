@@ -2,7 +2,7 @@
 #  CMake script
 ##
 
-set(TARGET "test")
+set(TARGET "test_alternative")
 
 
 file(GLOB_RECURSE TARGET_INC  "include/*.h")

@@ -12,7 +12,7 @@ int main(int argc, char **argv)
     unsigned int this_mpi_process(Utilities::MPI::this_mpi_process(mpi_communicator));
 
     constexpr int dim=2;
-    double T(1500);
+    double T(1200);
     double inner_step_size = 1.0;
     double outer_step_size = 1.5;
 

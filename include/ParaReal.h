@@ -175,6 +175,8 @@ bool ParaReal_Root<dim>::check_convergence()
 template<int dim>
 void ParaReal_Root<dim>::run()
 {
+  std::cout << "N outer iter: " << n_outer_iter << std::endl;
+  std::cout << "N inner iter: " << this->n_inner_iter << std::endl;
   std::cout << "Initialization" << std::endl;
   // Initialization
   for (unsigned int i=0; i<this->n_mpi_processes; i++)
@@ -298,6 +300,7 @@ void ParaReal_Root<dim>::run()
 
   // Output vectors
   std::cout << "Final results " << std::endl;
+  std::cout << "Result obtained in: " << (n_outer_iter*this->n_mpi_processes + this->n_inner_iter)*it << " iterations" << std::endl;
   gf_G->set_initial_vectors(F_vectors[converged_rank][0], F_vectors[converged_rank][1]);
   gf_G->output_iteration_results();
   gf_G->output_results_vectors();

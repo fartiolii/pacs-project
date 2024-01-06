@@ -14,8 +14,8 @@ int main(int argc, char **argv)
     constexpr int dim=2;
     unsigned int n_inner_it = 50;
     double inner_step_size = 1.5;
-    double outer_step_size = 8.0;
-    GFStepType outer_method(GFStepType::ADAM);
+    double outer_step_size = 4.0;
+    GFStepType outer_method(GFStepType::EULER);
     GFStepType inner_method(GFStepType::ADAM);
 
     if (this_mpi_process == 0)
