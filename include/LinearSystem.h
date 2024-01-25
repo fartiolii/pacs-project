@@ -44,25 +44,27 @@
 #include <cmath>
 #include <memory>
 
-///@note: split non-template object into header and source
-
-
 
 using namespace dealii;
 
 
-///@note: is it worth it to make it template?
 template<int dim>
 class LinearSystem
 {
 public:
-  LinearSystem();
+  //LinearSystem();
+  LinearSystem(const double gamma_val, const double nu_val, const unsigned int N);
 
   void update_vectors(const Vector<double> &y, const Vector<double> &u);
   void solve_system();
   void output_result_vectors() const;
   const Vector<double>& get_phi1() const { return phi1_vec; };
   const Vector<double>& get_phi2() const { return phi2_vec; };
+  const Vector<double>& get_grad_Jy() const { return grad_Jy; };
+  const Vector<double>& get_grad_Ju() const { return grad_Ju; };
+  void projected_moments(const Vector<double>& moment_y, const Vector<double>& moment_u);
+  const Vector<double>& get_projection_vec1() const { return proj_vec1; };
+  const Vector<double>& get_projection_vec2() const { return proj_vec2; };
   double evaluate_J() const;
   double evaluate_g() const;
   void test_Kstar();
@@ -70,9 +72,8 @@ public:
   unsigned int get_vector_size() const { return prob_size; };
 
 
-
-
 private:
+
   void make_grid();
   void initialize_dimensions();
   void setup_system();
@@ -103,9 +104,10 @@ private:
   DoFHandler<dim>          dof_handler;
   DoFHandler<dim>          dof_handler_system;
 
+  unsigned int          grid_refinement;
   unsigned int          prob_size;
-  double                alpha=0.01;
-  double                gamma=1.0; //0.5;
+  double                nu;
+  double                gamma;
   double                yd=1;
   SparsityPattern       sparsity_pattern;
   SparseMatrix<double>  stiffness_matrix;
@@ -121,19 +123,23 @@ private:
   Vector<double> yd_vec;
   Vector<double> phi_vec;
   Vector<double> Jacobian_phi;
+  Vector<double> grad_Jy;
+  Vector<double> grad_Ju;
   Vector<double> rhs_vec;
   Vector<double> phi1_vec;
   Vector<double> phi2_vec;
+
+  Vector<double> proj_vec1;
+  Vector<double> proj_vec2;
 
   Vector<double> solution_vec;
 
 };
 
+/*
 template <int dim>
 LinearSystem<dim>::LinearSystem()
   :
-    //mapping(FE_SimplexP<dim>(1))
-  //,
     fe(1)
   , fe_system(fe, 3)
   , quadrature_formula(fe.degree+1)
@@ -143,29 +149,40 @@ LinearSystem<dim>::LinearSystem()
 {
   setup_linear_system();
   DoFRenumbering::component_wise(dof_handler_system, std::vector<unsigned int>{0,1,2});
+}*/
+
+template <int dim>
+LinearSystem<dim>::LinearSystem(const double gamma_val, const double nu_val, const unsigned int N)
+: 
+    fe(1)
+  , fe_system(fe, 3)
+  , quadrature_formula(fe.degree+1)
+  , dof_handler(triangulation)
+  , dof_handler_system(triangulation)
+  , grid_refinement(N)
+  , prob_size(0)
+  , nu(nu_val)
+  , gamma(gamma_val)
+{
+  setup_linear_system();
+  DoFRenumbering::component_wise(dof_handler_system, std::vector<unsigned int>{0,1,2});
 }
+
+
+
 
 
 template <int dim>
 void LinearSystem<dim>::make_grid()
 {
-  /*
-  triangulation.clear();
-
-  if (dim == 2)
-    GridIn<dim>(triangulation).read("mesh/tri.msh");
-  else if(dim == 3)
-    GridIn<dim>(triangulation).read("mesh/tet.msh");
-  else
-    std::cerr << "Mesh is available only for dim 2 or 3!" << std::endl;
-  */
   GridGenerator::hyper_cube(triangulation, -1, 1);
-  triangulation.refine_global(5);
+  triangulation.refine_global(grid_refinement);
 
-
+  /*
   std::ofstream out("grid-LinSys.svg");
   GridOut       grid_out;
   grid_out.write_svg(triangulation, out);
+  */
 }
 
 
@@ -178,6 +195,7 @@ void LinearSystem<dim>::setup_system()
   /*
   std::cout << "Number of degrees of freedom vector: " << dof_handler.n_dofs()
             << std::endl;
+
   std::cout << "Number of degrees of freedom system: " << dof_handler_system.n_dofs()
             << std::endl;
   */
@@ -206,7 +224,10 @@ void LinearSystem<dim>::initialize_dimensions()
   phi_vec.reinit(prob_size);
   Jacobian_phi.reinit(prob_size);
   yd_vec.reinit(prob_size);
-
+  proj_vec1.reinit(prob_size);
+  proj_vec2.reinit(prob_size);
+  grad_Jy.reinit(prob_size);
+  grad_Ju.reinit(prob_size);
 
   rhs_vec.reinit(dof_handler_system.n_dofs());        //3*prob_size
   solution_vec.reinit(dof_handler_system.n_dofs());
@@ -298,8 +319,8 @@ void LinearSystem<dim>::assemble_system()
 template <int dim>
 void LinearSystem<dim>::initialize_vectors_y_u()
 {
-  y_vec.add(0.01);
-  u_vec.add(0.01);
+  //y_vec.add(0.01);
+  //u_vec.add(0.01);
 
   // Setting boundary values on solution vectors
   IndexSet boundary_values = DoFTools::extract_boundary_dofs(dof_handler);
@@ -321,15 +342,15 @@ void LinearSystem<dim>::setup_linear_system()
   assemble_system();
   initialize_vectors_y_u();
   set_global_sparsity_pattern();
-  std::cout << "Linear system successfully set up with " <<  dof_handler.n_dofs() << " dofs per vector" << std::endl;
+  std::cout << "Linear system successfully set up with " <<  dof_handler.n_dofs() << " nodes per vector" << std::endl;
 }
 
 
 template <int dim>
 void LinearSystem<dim>::set_phi()
 {
-  auto phi = [] (double y) { return exp(y);};
-  auto grad_phi = [] (double y) { return exp(y);};
+  auto phi = [] (double y) { return std::exp(y);};
+  auto grad_phi = [] (double y) { return std::exp(y);};
   //auto phi = [] (double y) { return exp(y)*y;};
   //auto grad_phi = [] (double y) { return (1+y)*exp(y);};
   //auto phi = [] (double y) { return std::pow(y,3);};
@@ -456,8 +477,6 @@ void LinearSystem<dim>::assemble_A()
 template <int dim>
 void LinearSystem<dim>::assemble_rhs()
 {
-  Vector<double> grad_Jy(prob_size);
-  Vector<double> grad_Ju(prob_size);
   Vector<double> g(prob_size);
 
   Vector<double> diff_yvec(y_vec);
@@ -467,7 +486,7 @@ void LinearSystem<dim>::assemble_rhs()
 
   mass_matrix.vmult(grad_Ju, u_vec);
 
-  grad_Ju *= alpha;
+  grad_Ju *= nu;
 
   grad_Jy *= -1;
   grad_Ju *= -1;
@@ -572,7 +591,14 @@ void LinearSystem<dim>::solve()
   solution_vec.extract_subvector_to(indices.begin(), indices.end(), phi1_vec.begin());
   std::iota(indices.begin(), indices.end(), prob_size);
   solution_vec.extract_subvector_to(indices.begin(), indices.end(), phi2_vec.begin());
+  /*
+  std::iota(indices.begin(), indices.end(), 2*prob_size);
+  solution_vec.extract_subvector_to(indices.begin(), indices.end(), lambda_vec.begin());
 
+  K_star.vmult(proj_vec1, lambda_vec);
+  mass_matrix.vmult(proj_vec2, lambda_vec);
+  proj_vec2 *= -1;
+  */
 }
 
 template <int dim>
@@ -629,7 +655,7 @@ double LinearSystem<dim>::evaluate_J() const
 
   mass_matrix.vmult(temp, u_vec);
 
-  J = J + 0.5*alpha*(temp*u_vec);
+  J = J + 0.5*nu*(temp*u_vec);
 
   return J;
 }
@@ -648,4 +674,60 @@ double LinearSystem<dim>::evaluate_g() const
   g -= temp;
 
   return g.l2_norm();
+}
+
+template <int dim>
+void LinearSystem<dim>::projected_moments(const Vector<double>& moment_y, const Vector<double>& moment_u)
+{
+  Vector<double> temp_rhs(3*prob_size);
+  Vector<double> g(prob_size);
+
+  std::vector<unsigned int> indices(prob_size);
+  std::iota(indices.begin(), indices.end(), 0);
+
+  auto it = temp_rhs.begin();
+  moment_y.extract_subvector_to(indices.begin(), indices.end(), it);
+
+  it += prob_size;
+  moment_u.extract_subvector_to(indices.begin(), indices.end(), it);
+
+  Vector<double> temp(prob_size);
+  mass_matrix.vmult(temp, phi_vec);
+  g.add(gamma, temp);
+  stiffness_matrix.vmult(temp, y_vec);
+  g += temp;
+  mass_matrix.vmult(temp, u_vec);
+  g -= temp;
+  g *= -1;
+
+  it += prob_size;
+  g.extract_subvector_to(indices.begin(), indices.end(), it);
+
+  Vector<double> temp_solution(3*prob_size);
+
+  FEValuesExtractors::Vector phi(0);
+  ComponentMask phi_mask = fe_system.component_mask(phi);
+
+  std::map<types::global_dof_index, double> boundary_values;
+  VectorTools::interpolate_boundary_values(dof_handler_system,
+                                           0,
+                                           Functions::ZeroFunction<dim>(3),
+                                           boundary_values,
+                                           phi_mask);
+
+  MatrixTools::apply_boundary_values(boundary_values,
+                                     A_matrix,
+                                     temp_solution,
+                                     temp_rhs);
+
+
+  SolverControl                       solver_control(200000, 1e-6 * temp_rhs.l2_norm());
+  SolverMinRes<Vector<double>>        solver(solver_control);
+  solver.solve(A_matrix, temp_solution, temp_rhs, PreconditionIdentity());
+
+  std::vector<unsigned int> indexes(prob_size);
+  std::iota(indexes.begin(), indexes.end(), 0);
+  temp_solution.extract_subvector_to(indexes.begin(), indexes.end(), proj_vec1.begin());
+  std::iota(indexes.begin(), indexes.end(), prob_size);
+  temp_solution.extract_subvector_to(indexes.begin(), indexes.end(), proj_vec2.begin());
 }

@@ -1,0 +1,5 @@
+{
+  "gamma": 0.8,
+  "nu": 0.05,
+  "Num grid refinements": 5
+}

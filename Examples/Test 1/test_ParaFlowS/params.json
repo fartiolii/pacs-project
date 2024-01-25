@@ -1,0 +1,11 @@
+{
+  "N": 4,
+  "n_inner_it": 20,
+  "n_outer_it": 1,
+  "inner_step_size": 1.5,
+  "outer_step_size": 1.5,
+  "solver": {
+    "F": "EULER",
+    "G": "EULER"
+   }
+}

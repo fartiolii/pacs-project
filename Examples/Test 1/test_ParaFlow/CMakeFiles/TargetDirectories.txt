@@ -1,0 +1,10 @@
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/test_paraFlow.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/run.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/debug.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/release.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/runclean.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/distclean.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/strip_comments.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/info.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/edit_cache.dir
+/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/rebuild_cache.dir

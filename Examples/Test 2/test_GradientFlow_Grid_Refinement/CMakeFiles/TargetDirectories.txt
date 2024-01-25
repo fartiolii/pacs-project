@@ -1,0 +1,10 @@
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/test_GradientFlow_grid_refinement.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/run.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/debug.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/release.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/runclean.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/distclean.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/strip_comments.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/info.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/edit_cache.dir
+/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow_Grid_Refinement/CMakeFiles/rebuild_cache.dir

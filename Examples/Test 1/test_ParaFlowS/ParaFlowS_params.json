@@ -1,0 +1,9 @@
+{
+  "N": 4,
+  "step_size_G": 1.5,
+  "step_size_F": 0.1,
+  "n_iter_G": 1,
+  "n_iter_F": 50,
+  "Solver G": "Euler",
+  "Solver F": "Adam"
+}
