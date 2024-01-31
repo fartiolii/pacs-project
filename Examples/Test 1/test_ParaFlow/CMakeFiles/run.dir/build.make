@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Desktop/PacsProject/project/tests
+CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Desktop/PacsProject/project/tests
+CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow"
 
 # Utility rule file for run.
 
@@ -67,7 +67,7 @@ include CMakeFiles/run.dir/compiler_depend.make
 include CMakeFiles/run.dir/progress.make
 
 CMakeFiles/run: test_paraFlow
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Run test_paraFlow with Release configuration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Run test_paraFlow with Release configuration"
 	./test_paraFlow
 
 run: CMakeFiles/run
@@ -83,6 +83,6 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 CMakeFiles/run.dir/depend:
-	cd /home/ubuntu/Desktop/PacsProject/project/tests && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow/CMakeFiles/run.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/run.dir/depend
 

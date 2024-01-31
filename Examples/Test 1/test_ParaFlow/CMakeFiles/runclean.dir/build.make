@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Desktop/PacsProject/project/tests
+CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Desktop/PacsProject/project/tests
+CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow"
 
 # Utility rule file for runclean.
 
@@ -67,7 +67,7 @@ include CMakeFiles/runclean.dir/compiler_depend.make
 include CMakeFiles/runclean.dir/progress.make
 
 CMakeFiles/runclean:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "runclean invoked"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "runclean invoked"
 	/usr/bin/cmake -E remove *.log *.gmv *.gnuplot *.gpl *.eps *.pov *.vtk *.ucd *.d2
 
 runclean: CMakeFiles/runclean
@@ -83,6 +83,6 @@ CMakeFiles/runclean.dir/clean:
 .PHONY : CMakeFiles/runclean.dir/clean
 
 CMakeFiles/runclean.dir/depend:
-	cd /home/ubuntu/Desktop/PacsProject/project/tests && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests /home/ubuntu/Desktop/PacsProject/project/tests/CMakeFiles/runclean.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow/CMakeFiles/runclean.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/runclean.dir/depend
 

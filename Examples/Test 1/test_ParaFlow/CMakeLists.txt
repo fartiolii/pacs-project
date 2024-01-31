@@ -4,9 +4,6 @@
 
 set(TARGET "test_paraFlow")
 
-
-file(GLOB_RECURSE TARGET_INC  "../include/*.h")
-
 set(TARGET_SRC
   ${TARGET}.cc
   )
@@ -31,6 +28,7 @@ deal_ii_initialize_cached_variables()
 project(${TARGET})
 
 # Add include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../include/utils)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../include/numerical_methods)
 
 deal_ii_invoke_autopilot()

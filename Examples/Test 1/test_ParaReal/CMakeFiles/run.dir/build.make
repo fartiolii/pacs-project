@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal"
+CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal"
+CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal"
 
 # Utility rule file for run.
 
@@ -67,7 +67,7 @@ include CMakeFiles/run.dir/compiler_depend.make
 include CMakeFiles/run.dir/progress.make
 
 CMakeFiles/run: test_paraReal
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Run test_paraReal with Release configuration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Run test_paraReal with Release configuration"
 	./test_paraReal
 
 run: CMakeFiles/run
@@ -83,6 +83,6 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 CMakeFiles/run.dir/depend:
-	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal/CMakeFiles/run.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal/CMakeFiles/run.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/run.dir/depend
 

@@ -3,12 +3,12 @@
 
 CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
   /usr/include/stdc-predef.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/ParaFlow.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/ParallelBase.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/NumericalAlgorithmBase.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/DescentStep.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/DescentStepBase.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/LinearSystem.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParaFlow.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParallelBase.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/NumericalAlgorithmBase.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStep.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStepBase.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/utils/LinearSystem.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/config.h \
   /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h \
@@ -2715,8 +2715,6 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/boost/mpl/aux_/lambda_spec.hpp:
 
-/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_connectivity.h:
-
 /usr/include/boost/mpl/or.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/cell_id.h:
@@ -2837,8 +2835,6 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterListModifier.hpp:
 
-/home/ubuntu/Desktop/PacsProject/project/include/LinearSystem.h:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_lclDot.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_TableFormat.hpp:
@@ -2928,10 +2924,6 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 /usr/include/boost/preprocessor/seq/for_each_i.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_CombineMode.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Map_decl.hpp:
-
-/usr/include/boost/type_traits/is_reference.hpp:
 
 /usr/include/boost/function/function_template.hpp:
 
@@ -3184,8 +3176,6 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 /usr/include/c++/10/bits/locale_facets.tcc:
 
 /usr/include/boost/range/has_range_iterator.hpp:
-
-/usr/include/boost/range/difference_type.hpp:
 
 /usr/include/boost/range/detail/common.hpp:
 
@@ -3507,8 +3497,6 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/boost/preprocessor/variadic/elem.hpp:
 
-/home/ubuntu/Desktop/PacsProject/project/include/ParallelBase.h:
-
 /usr/include/boost/type_traits/has_trivial_copy.hpp:
 
 /usr/include/boost/move/core.hpp:
@@ -3671,6 +3659,10 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
+/usr/include/boost/type_traits/is_reference.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Map_decl.hpp:
+
 /usr/include/c++/10/cctype:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_LabeledObject.hpp:
@@ -3715,43 +3707,23 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/c++/10/tuple:
 
-/usr/include/c++/10/bits/concept_check.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_SerializationTraitsHelpers.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/boost/type_traits/remove_volatile.hpp:
-
-/usr/include/errno.h:
-
-/usr/include/c++/10/cstdio:
-
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request.h:
-
-/usr/include/boost/mpl/aux_/static_cast.hpp:
-
-/usr/include/boost/type_traits/add_pointer.hpp:
-
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/info.h:
-
-/usr/include/boost/iterator/detail/enable_if.hpp:
-
-/usr/include/boost/iostreams/detail/double_object.hpp:
-
-/usr/include/c++/10/type_traits:
-
 /usr/include/boost/bind/storage.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_avail.hpp:
 
 /usr/include/c++/10/fstream:
 
-/home/ubuntu/Desktop/PacsProject/project/include/DescentStep.h:
+/usr/include/c++/10/bits/concept_check.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Tuners.hpp:
+/usr/include/errno.h:
+
+/usr/include/c++/10/cstdio:
+
+/usr/include/boost/iterator/detail/enable_if.hpp:
+
+/usr/include/boost/iostreams/detail/double_object.hpp:
+
+/usr/include/c++/10/type_traits:
 
 /usr/include/nlohmann/detail/meta/identity_tag.hpp:
 
@@ -3797,25 +3769,11 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/boost/multi_index/sequenced_index.hpp:
 
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Volatile_Load.hpp:
+
 /usr/include/boost/preprocessor/cat.hpp:
 
 /usr/include/c++/10/ext/string_conversions.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_DistributorActor.hpp:
-
-/usr/include/c++/10/bits/exception.h:
-
-/usr/include/boost/archive/detail/archive_serializer_map.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intercomm_inln.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_copyConvert.hpp:
-
-/usr/include/boost/parameter/aux_/pack/tag_template_keyword_arg.hpp:
 
 /usr/include/boost/type_traits/remove_cv.hpp:
 
@@ -3857,13 +3815,13 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/strings.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Vector_def.hpp:
-
 /usr/include/boost/preprocessor/facilities/overload.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Generic_Secondary.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/decl/Kokkos_Declare_SERIAL.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
@@ -3935,6 +3893,14 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/op.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
+/usr/include/boost/type_traits/remove_volatile.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_SerializationTraitsHelpers.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp:
+
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Exceptions.hpp:
 
 /usr/include/boost/iostreams/device/array.hpp:
@@ -3985,9 +3951,29 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/boost/parameter/aux_/result_of0.hpp:
 
+/usr/include/boost/type_traits/add_pointer.hpp:
+
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/info.h:
+
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request.h:
+
+/usr/include/boost/mpl/aux_/static_cast.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_CopyViews.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/less_equal.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_MultiVector_fwd.hpp:
+
+/usr/include/boost/serialization/vector.hpp:
+
 /usr/include/c++/10/exception:
 
-/home/ubuntu/Desktop/PacsProject/project/include/DescentStepBase.h:
+/home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStepBase.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskNode.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskResult.hpp:
 
 /usr/include/boost/type_traits/add_volatile.hpp:
 
@@ -4043,17 +4029,17 @@ CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o: test_paraFlow.cc \
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/ctype_base.h:
 
-/usr/include/boost/range/size_type.hpp:
+/usr/include/c++/10/bits/memoryfwd.h:
 
-test_paraFlow.cc:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_FEMultiVector_fwd.hpp:
 
-/usr/include/c++/10/backward/binders.h:
+/usr/include/boost/concept/assert.hpp:
 
-/usr/include/boost/type_traits/is_arithmetic.hpp:
+/usr/include/c++/10/debug/debug.h:
 
-/usr/include/alloca.h:
+/usr/include/c++/10/bits/basic_string.tcc:
 
-/usr/include/boost/multi_index/detail/ord_index_ops.hpp:
+/usr/include/boost/mpl/aux_/insert_impl.hpp:
 
 /usr/include/c++/10/bits/stl_iterator_base_funcs.h:
 
@@ -4064,6 +4050,16 @@ test_paraFlow.cc:
 /usr/include/boost/signals2/detail/slot_template.hpp:
 
 /usr/include/c++/10/iterator:
+
+/usr/include/boost/iterator/iterator_concepts.hpp:
+
+/usr/include/c++/10/bits/istream.tcc:
+
+/usr/include/boost/move/detail/pointer_element.hpp:
+
+/usr/include/boost/mpl/aux_/arity.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/include/boost/iterator/detail/facade_iterator_category.hpp:
 
@@ -4090,10 +4086,6 @@ test_paraFlow.cc:
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/multigrid/mg_constrained_dofs.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterEntryValidator.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/string.h:
 
 /usr/include/boost/multi_index/identity.hpp:
 
@@ -4125,51 +4117,77 @@ test_paraFlow.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_axpby_impl.hpp:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/10/include/stddef.h:
 
-/usr/include/boost/preprocessor/control/iif.hpp:
+/usr/include/c++/10/bits/unique_ptr.h:
+
+/usr/include/boost/range/difference_type.hpp:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/boost/archive/detail/archive_serializer_map.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intercomm_inln.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_copyConvert.hpp:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/boost/parameter/aux_/pack/tag_template_keyword_arg.hpp:
+
+/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_connectivity.h:
+
+/home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParaFlow.h:
+
+/usr/include/boost/limits.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_avail.hpp:
+
+/home/ubuntu/Documents/petsc-3.18.6/include/petscsystypes.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/avx512pfintrin.h:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/c++locale.h:
+
+/usr/include/boost/mpl/aux_/traits_lambda_spec.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/qprojector.h:
+
+/usr/include/c++/10/mutex:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCore_Config_PostInclude.hpp:
+
+/usr/include/c++/10/bits/nested_exception.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosClassic_DefaultNode_config.h:
+
+/usr/include/boost/signals2/detail/unique_lock.hpp:
+
+/usr/include/boost/mpl/aux_/lambda_support.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
+
+/usr/include/boost/range/size_type.hpp:
+
+test_paraFlow.cc:
+
+/usr/include/c++/10/backward/binders.h:
+
+/usr/include/boost/type_traits/is_arithmetic.hpp:
+
+/usr/include/alloca.h:
+
+/usr/include/boost/multi_index/detail/ord_index_ops.hpp:
 
 /usr/include/c++/10/atomic:
 
-/usr/include/c++/10/bits/memoryfwd.h:
+/usr/include/boost/preprocessor/control/iif.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_FEMultiVector_fwd.hpp:
-
-/usr/include/boost/concept/assert.hpp:
-
-/usr/include/c++/10/debug/debug.h:
-
-/usr/include/c++/10/bits/basic_string.tcc:
-
-/usr/include/boost/mpl/aux_/insert_impl.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
-
-/usr/include/boost/iterator/iterator_concepts.hpp:
-
-/usr/include/c++/10/bits/istream.tcc:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/include/boost/move/detail/pointer_element.hpp:
-
-/usr/include/boost/mpl/aux_/arity.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/bmi2intrin.h:
-
-/home/ubuntu/Documents/petsc-3.18.6/include/petscversion.h:
-
-/usr/include/c++/10/condition_variable:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/stdarg.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Volatile_Load.hpp:
-
-/home/ubuntu/Desktop/PacsProject/project/include/ParaFlow.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_ScratchSpace.hpp:
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
@@ -4181,17 +4199,13 @@ test_paraFlow.cc:
 
 /usr/include/c++/10/bits/allocated_ptr.h:
 
-/usr/include/x86_64-linux-gnu/c++/10/bits/atomic_word.h:
+/usr/lib/gcc/x86_64-linux-gnu/10/include/bmi2intrin.h:
 
-/usr/include/c++/10/bits/locale_facets_nonio.h:
+/home/ubuntu/Documents/petsc-3.18.6/include/petscversion.h:
 
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/evaluation_kernels.h:
+/usr/include/c++/10/condition_variable:
 
-/usr/include/boost/parameter/aux_/pack/parameter_requirements.hpp:
-
-/usr/include/c++/10/bits/stl_set.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+/usr/lib/gcc/x86_64-linux-gnu/10/include/stdarg.h:
 
 /usr/include/boost/type_traits/is_scalar.hpp:
 
@@ -4237,22 +4251,6 @@ test_paraFlow.cc:
 
 /usr/include/boost/config/platform/linux.hpp:
 
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/qprojector.h:
-
-/usr/include/c++/10/mutex:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCore_Config_PostInclude.hpp:
-
-/usr/include/c++/10/bits/nested_exception.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/avx512pfintrin.h:
-
-/usr/include/x86_64-linux-gnu/c++/10/bits/c++locale.h:
-
-/usr/include/boost/mpl/aux_/traits_lambda_spec.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosClassic_DefaultNode_config.h:
-
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/c++/10/bits/postypes.h:
@@ -4268,6 +4266,18 @@ test_paraFlow.cc:
 /usr/include/c++/10/cstdint:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/traits/Kokkos_LaunchBoundsTrait.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/atomic_word.h:
+
+/usr/include/c++/10/bits/locale_facets_nonio.h:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/evaluation_kernels.h:
+
+/usr/include/boost/parameter/aux_/pack/parameter_requirements.hpp:
+
+/usr/include/c++/10/bits/stl_set.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/include/boost/range/size.hpp:
 
@@ -4453,12 +4463,6 @@ test_paraFlow.cc:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp:
 
-/usr/include/boost/signals2/detail/unique_lock.hpp:
-
-/usr/include/boost/mpl/aux_/lambda_support.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/lac/vector_type_traits.h:
 
 /usr/include/c++/10/ext/numeric_traits.h:
@@ -4593,6 +4597,18 @@ test_paraFlow.cc:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/gthr-default.h:
 
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_DistributorActor.hpp:
+
+/usr/include/c++/10/bits/exception.h:
+
+/home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParallelBase.h:
+
+/usr/include/boost/parameter/template_keyword.hpp:
+
+/usr/include/boost/mpl/aux_/config/use_preprocessed.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/tbmintrin.h:
+
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_TestForException.hpp:
 
 /usr/include/c++/10/ios:
@@ -4626,6 +4642,10 @@ test_paraFlow.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Macros.hpp:
 
 /usr/include/boost/preprocessor/punctuation/comma.hpp:
+
+/usr/include/boost/preprocessor/array/elem.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
 /usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
 
@@ -4671,6 +4691,8 @@ test_paraFlow.cc:
 
 /usr/include/boost/multi_index/detail/is_transparent.hpp:
 
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Tuners.hpp:
+
 /usr/include/boost/mpl/void_fwd.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Array.hpp:
@@ -4693,8 +4715,6 @@ test_paraFlow.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCore_Config_FwdBackend.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskNode.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_VerbosityLevel.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Array.hpp:
@@ -4703,6 +4723,12 @@ test_paraFlow.cc:
 
 /usr/include/boost/multi_index/detail/safe_mode.hpp:
 
+/usr/include/boost/container/detail/construct_in_place.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_SharedAlloc.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Cuda/Kokkos_Cuda_Half.hpp:
+
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCore_Config_DeclareBackend.hpp:
 
 /usr/include/boost/parameter/config.hpp:
@@ -4710,6 +4736,12 @@ test_paraFlow.cc:
 /usr/include/c++/10/utility:
 
 /usr/include/boost/multi_index/detail/seq_index_ops.hpp:
+
+/usr/include/boost/iostreams/detail/adapter/non_blocking_adapter.hpp:
+
+/usr/include/boost/type_traits/is_destructible.hpp:
+
+/usr/include/boost/serialization/split_member.hpp:
 
 /usr/include/c++/10/bits/uses_allocator.h:
 
@@ -4846,14 +4878,6 @@ test_paraFlow.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Import_def.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Tags.hpp:
-
-/home/ubuntu/Documents/petsc-3.18.6/include/petscsystypes.h:
-
-/usr/include/boost/container/detail/construct_in_place.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Cuda/Kokkos_Cuda_Half.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_SharedAlloc.hpp:
 
 /usr/include/boost/mpl/numeric_cast.hpp:
 
@@ -5089,13 +5113,13 @@ test_paraFlow.cc:
 
 /usr/include/c++/10/backward/auto_ptr.h:
 
-/usr/include/wchar.h:
-
-/usr/include/boost/is_placeholder.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_CompObject.h:
 
 /home/ubuntu/Documents/petsc-3.18.6/include/petscdrawtypes.h:
+
+/usr/include/wchar.h:
+
+/usr/include/boost/is_placeholder.hpp:
 
 /usr/include/c++/10/bits/ios_base.h:
 
@@ -5132,8 +5156,6 @@ test_paraFlow.cc:
 /usr/include/boost/smart_ptr/detail/local_counted_base.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Fetch_Sub.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskResult.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Assert.hpp:
 
@@ -5179,9 +5201,13 @@ test_paraFlow.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_SimpleTaskScheduler.hpp:
 
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_ScratchSpace.hpp:
+
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/iterator_range.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_HostBarrier.hpp:
+
+/home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/NumericalAlgorithmBase.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_AnonymousSpace.hpp:
 
@@ -5237,24 +5263,6 @@ test_paraFlow.cc:
 
 /usr/include/boost/move/detail/destruct_n.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
-/usr/include/boost/preprocessor/array/elem.hpp:
-
-/usr/include/boost/type_traits/is_destructible.hpp:
-
-/usr/include/boost/serialization/split_member.hpp:
-
-/usr/include/boost/iostreams/detail/adapter/non_blocking_adapter.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_CopyViews.hpp:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/less_equal.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_MultiVector_fwd.hpp:
-
-/usr/include/boost/serialization/vector.hpp:
-
 /usr/include/c++/10/bits/std_function.h:
 
 /usr/include/boost/type_traits/integral_constant.hpp:
@@ -5266,8 +5274,6 @@ test_paraFlow.cc:
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/fe_values.h:
 
 /usr/include/boost/serialization/nvp.hpp:
-
-/usr/include/c++/10/bits/unique_ptr.h:
 
 /usr/include/c++/10/bits/erase_if.h:
 
@@ -5324,6 +5330,8 @@ test_paraFlow.cc:
 /usr/include/boost/archive/binary_iarchive.hpp:
 
 /usr/include/unistd.h:
+
+/home/ubuntu/Desktop/PacsProject/project/include/utils/LinearSystem.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
@@ -5762,8 +5770,6 @@ test_paraFlow.cc:
 /usr/include/boost/iostreams/detail/config/wide_streams.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/lac/solver_minres.h:
-
-/home/ubuntu/Desktop/PacsProject/project/include/NumericalAlgorithmBase.h:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/cxxabi_tweaks.h:
 
@@ -6423,12 +6429,6 @@ test_paraFlow.cc:
 
 /usr/include/boost/mpl/limits/vector.hpp:
 
-/usr/include/boost/parameter/template_keyword.hpp:
-
-/usr/include/boost/mpl/aux_/config/use_preprocessed.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/tbmintrin.h:
-
 /usr/include/boost/mp11/integral.hpp:
 
 /usr/include/boost/mp11/detail/mp_fold.hpp:
@@ -6693,9 +6693,9 @@ test_paraFlow.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Export_fwd.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Describable.hpp:
-
 /usr/include/boost/function_equal.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Describable.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Import_fwd.hpp:
 
@@ -6748,6 +6748,8 @@ test_paraFlow.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_InnerProductSpaceTraits.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Access.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Vector_def.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_MultiVector.hpp:
 
@@ -6847,6 +6849,8 @@ test_paraFlow.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2w_impl.hpp:
 
+/home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStep.h:
+
 /usr/include/c++/10/debug/assertions.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2w_tpl_spec_avail.hpp:
@@ -6896,10 +6900,6 @@ test_paraFlow.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_scal_mv_impl.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_avail.hpp:
-
-/usr/include/boost/limits.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_avail.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_scal_tpl_spec_decl.hpp:
 

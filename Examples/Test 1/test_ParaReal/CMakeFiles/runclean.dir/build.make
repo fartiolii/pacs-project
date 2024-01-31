@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal"
+CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal"
+CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal"
 
 # Utility rule file for runclean.
 
@@ -67,7 +67,7 @@ include CMakeFiles/runclean.dir/compiler_depend.make
 include CMakeFiles/runclean.dir/progress.make
 
 CMakeFiles/runclean:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "runclean invoked"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "runclean invoked"
 	/usr/bin/cmake -E remove *.log *.gmv *.gnuplot *.gpl *.eps *.pov *.vtk *.ucd *.d2
 
 runclean: CMakeFiles/runclean
@@ -83,6 +83,6 @@ CMakeFiles/runclean.dir/clean:
 .PHONY : CMakeFiles/runclean.dir/clean
 
 CMakeFiles/runclean.dir/depend:
-	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal/CMakeFiles/runclean.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal/CMakeFiles/runclean.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/runclean.dir/depend
 

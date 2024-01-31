@@ -1,34 +1,18 @@
-///@note: include path should be absolute
 #include <ParaFlowS.h>
-#include <iostream>
-#include <fstream>
-#include <nlohmann/json.hpp>
 
 using namespace dealii;
-using json = nlohmann::json;
 
 constexpr int dim=2;
 
 int main()
 {
-    // Read JSON object from file
-    std::ifstream file("params.json");
+    //Read parameters from file
+    std::string linearSystem_file("../config_params.json");
+    std::string ParaFlowS_file("ParaFlowS_params.json");
 
-    json parameters;
-    file >> parameters;
-    file.close();
-
-    unsigned int N = parameters["N"];
-    unsigned int n_inner_it = parameters["n_inner_it"];
-    unsigned int n_outer_it = parameters["n_outer_it"];
-    double inner_step_size = parameters["inner_step_size"];
-    double outer_step_size = parameters["outer_step_size"];
-    GFStepType outer_method(GFStepType::EULER);
-    GFStepType inner_method(GFStepType::EULER);
-
-    ParaFlowS<dim> pr(outer_method, inner_method);
-    pr.run(N, outer_step_size, inner_step_size, n_outer_it, n_inner_it);
-
+    ParaFlowS<dim> PFs(linearSystem_file, ParaFlowS_file);
+    //ParaFlowS<dim> PFs(1.0, 0.01, 5, ParaFlowS_file);
+    PFs.run();
 
     return 0;
 }

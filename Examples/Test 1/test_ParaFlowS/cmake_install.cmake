@@ -1,4 +1,4 @@
-# Install script for directory: /home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS
+# Install script for directory: /home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlowS
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlowS/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

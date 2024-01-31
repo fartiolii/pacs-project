@@ -3,10 +3,12 @@
 
 CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /usr/include/stdc-predef.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/ParaReal.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/GradientFlow.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/GradientFlowBase.h \
-  /home/ubuntu/Desktop/PacsProject/project/include/LinearSystem.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParaReal.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParallelBase.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/NumericalAlgorithmBase.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStep.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStepBase.h \
+  /home/ubuntu/Desktop/PacsProject/project/include/utils/LinearSystem.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/config.h \
   /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h \
@@ -91,6 +93,9 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2-decl.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/10/iostream \
   /usr/include/c++/10/ostream \
   /usr/include/c++/10/ios \
@@ -104,6 +109,8 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2-decl.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/10/bits/char_traits.h \
   /usr/include/c++/10/cstdint \
   /usr/lib/gcc/x86_64-linux-gnu/10/include/stdint.h \
@@ -167,8 +174,11 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/10/bits/std_abs.h \
   /usr/include/c++/10/cstdio \
   /usr/include/c++/10/cerrno \
@@ -221,6 +231,8 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/functions_inln.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request_inln.h \
   /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/comm_inln.h \
   /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intracomm_inln.h \
@@ -471,6 +483,7 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -1729,6 +1742,7 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria_faces.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria_iterator.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria_iterator.templates.h \
+  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria_iterator.templates.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/grid_out.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/data_out_base.h \
   /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/table.h \
@@ -2627,19 +2641,13 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_project.h:
 
-/usr/include/boost/serialization/type_info_implementation.hpp:
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_mean_value.h:
 
-/usr/include/boost/serialization/tracking_enum.hpp:
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_interpolate.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_Hash.hpp:
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/mapping_info_storage.h:
 
-/usr/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosKernels_Half.hpp:
-
-/usr/include/c++/10/bits/stl_vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/stat.h:
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/face_info.h:
 
 /usr/include/boost/mpl/aux_/numeric_op.hpp:
 
@@ -2669,13 +2677,13 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
 
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/mapping_info_storage.h:
-
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/reference_cell.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Core.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ConfigDefs.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
 
 /home/ubuntu/Documents/p4est-2.3.2/FAST/include/p8est_geometry.h:
 
@@ -2791,6 +2799,10 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /usr/include/boost/archive/detail/decl.hpp:
 
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_Hash.hpp:
+
+/usr/include/boost/serialization/tracking_enum.hpp:
+
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCompat_View.hpp:
 
 /usr/include/nlohmann/detail/hash.hpp:
@@ -2824,8 +2836,6 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 /home/ubuntu/Documents/p4est-2.3.2/FAST/include/sc_config.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterListModifier.hpp:
-
-/home/ubuntu/Desktop/PacsProject/project/include/LinearSystem.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_lclDot.hpp:
 
@@ -2911,23 +2921,15 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_DefaultTypes.hpp:
 
-/usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_Data.h:
 
 /usr/include/boost/preprocessor/seq/for_each_i.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_CombineMode.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Map_decl.hpp:
-
-/usr/include/boost/type_traits/is_reference.hpp:
-
 /usr/include/boost/function/function_template.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_Object.h:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/greater.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_TimeMonitor.hpp:
 
@@ -2936,14 +2938,6 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 /usr/include/x86_64-linux-gnu/asm/unistd_64.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_config.h:
-
-/usr/include/boost/move/algo/unique.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/traits/Kokkos_GraphKernelTrait.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrminf_spec.hpp:
-
-/usr/include/boost/move/detail/placement_new.hpp:
 
 /usr/include/boost/smart_ptr/detail/sp_has_sync_intrinsics.hpp:
 
@@ -2961,9 +2955,9 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
 /usr/include/c++/10/ext/atomicity.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_decl.hpp:
 
@@ -3046,6 +3040,10 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 /usr/include/boost/container/detail/mpl.hpp:
 
 /usr/include/boost/signals2/signal_type.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/non_matching/mapping_info.h:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/polynomial.h:
 
 /usr/include/boost/move/detail/std_ns_begin.hpp:
 
@@ -3131,6 +3129,8 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /usr/include/boost/preprocessor/seq/fold_left.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
 /usr/include/boost/utility/base_from_member.hpp:
 
 /usr/include/boost/intrusive/pack_options.hpp:
@@ -3152,8 +3152,6 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 /usr/include/boost/preprocessor/seq/detail/is_empty.hpp:
 
 /usr/include/boost/preprocessor/list/detail/fold_right.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_LongLongSerialDenseVector.h:
 
 /usr/include/boost/move/detail/fwd_macros.hpp:
 
@@ -3178,8 +3176,6 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 /usr/include/c++/10/bits/locale_facets.tcc:
 
 /usr/include/boost/range/has_range_iterator.hpp:
-
-/usr/include/boost/range/difference_type.hpp:
 
 /usr/include/boost/range/size_type.hpp:
 
@@ -3251,9 +3247,9 @@ CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: test_paraReal.cc \
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_any.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
 /usr/include/boost/range/iterator_range_io.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
 
@@ -3505,23 +3501,53 @@ test_paraReal.cc:
 
 /usr/include/boost/type_traits/has_trivial_copy.hpp:
 
-/usr/include/c++/10/cstddef:
+/usr/include/boost/move/core.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_RCPNode.hpp:
+/usr/include/boost/preprocessor/tuple/detail/is_single_return.hpp:
 
-/usr/include/linux/errno.h:
+/usr/include/boost/preprocessor/tuple/rem.hpp:
 
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/communication_pattern_base.h:
+/usr/include/boost/geometry/core/point_type.hpp:
 
-/usr/include/boost/preprocessor/control/deduce_d.hpp:
+/usr/include/boost/mpl/lambda_fwd.hpp:
 
-/usr/include/boost/preprocessor/comparison/less_equal.hpp:
+/usr/include/boost/preprocessor/variadic/size.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_KokkosRefactor_Details_MultiVectorLocalDeepCopy.hpp:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_TaskScheduler.hpp:
 
-/usr/include/boost/type_traits/has_plus_assign.hpp:
+/usr/lib/gcc/x86_64-linux-gnu/10/include/cldemoteintrin.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_LinkedListNode.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_decl.hpp:
+
+/usr/include/boost/preprocessor/iteration/detail/iter/forward1.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria_accessor.templates.h:
+
+/usr/include/boost/preprocessor/iteration/detail/bounds/upper1.hpp:
+
+/usr/include/boost/preprocessor/facilities/expand.hpp:
 
 /usr/include/boost/preprocessor/tuple/elem.hpp:
+
+/usr/include/boost/archive/binary_iarchive_impl.hpp:
+
+/usr/include/boost/parameter/aux_/pack/tag_deduced.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/lac/vector_element_access.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Directory_decl.hpp:
+
+/usr/include/boost/preprocessor/control/detail/while.hpp:
+
+/usr/include/boost/preprocessor/logical/compl.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_mpiIsInitialized.hpp:
+
+/usr/include/boost/preprocessor/detail/check.hpp:
+
+/usr/include/c++/10/bits/sstream.tcc:
 
 /usr/include/boost/bind/bind_mf_cc.hpp:
 
@@ -3572,10 +3598,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ArrayViewDecl.hpp:
 
 /usr/include/c++/10/memory:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterEntryValidator.hpp:
-
-/usr/include/boost/multi_index/identity.hpp:
 
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/datatype_inln.h:
 
@@ -3639,7 +3661,9 @@ test_paraReal.cc:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/10/include/avx2intrin.h:
+/usr/include/boost/type_traits/is_reference.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Map_decl.hpp:
 
 /usr/include/c++/10/cctype:
 
@@ -3693,29 +3717,15 @@ test_paraReal.cc:
 
 /usr/include/c++/10/bits/concept_check.h:
 
-/usr/include/boost/type_traits/add_pointer.hpp:
-
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/info.h:
-
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request.h:
-
-/usr/include/boost/mpl/aux_/static_cast.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_SerializationTraitsHelpers.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/boost/type_traits/remove_volatile.hpp:
-
 /usr/include/errno.h:
 
-/usr/include/c++/10/cerrno:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_interpolate.h:
-
 /usr/include/c++/10/cstdio:
+
+/usr/include/boost/iterator/detail/enable_if.hpp:
+
+/usr/include/boost/iostreams/detail/double_object.hpp:
+
+/usr/include/c++/10/type_traits:
 
 /usr/include/nlohmann/detail/meta/identity_tag.hpp:
 
@@ -3763,35 +3773,21 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Volatile_Load.hpp:
 
-/usr/include/boost/type_traits/remove_pointer.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Extents.hpp:
-
-/usr/include/boost/archive/basic_binary_oarchive.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Load.hpp:
-
-/usr/include/boost/bind/placeholders.hpp:
-
-/usr/include/boost/mpl/clear_fwd.hpp:
-
-/usr/include/boost/type_traits/cv_traits.hpp:
-
 /usr/include/boost/mpl/has_xxx.hpp:
 
 /usr/include/boost/preprocessor/cat.hpp:
 
-/usr/include/boost/serialization/split_free.hpp:
+/usr/include/c++/10/ext/string_conversions.h:
 
 /usr/include/asm-generic/errno-base.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_DistributorActor.hpp:
+/usr/include/boost/archive/detail/archive_serializer_map.hpp:
 
-/usr/include/c++/10/bits/exception.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
-/usr/include/string.h:
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intercomm_inln.h:
 
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_copyConvert.hpp:
 
 /usr/include/boost/parameter/aux_/pack/tag_template_keyword_arg.hpp:
 
@@ -3821,14 +3817,6 @@ test_paraReal.cc:
 
 /usr/lib/gcc/x86_64-linux-gnu/10/include/clzerointrin.h:
 
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intercomm_inln.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_copyConvert.hpp:
-
-/usr/include/boost/archive/detail/archive_serializer_map.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
 /usr/include/boost/range/detail/misc_concept.hpp:
 
 /usr/include/stdc-predef.h:
@@ -3843,17 +3831,21 @@ test_paraReal.cc:
 
 /usr/include/strings.h:
 
-/usr/include/c++/10/ext/type_traits.h:
+/usr/include/boost/preprocessor/facilities/overload.hpp:
 
-/usr/include/boost/signals2/detail/signals_common_macros.hpp:
-
-/usr/include/boost/tuple/tuple.hpp:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Generic_Secondary.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/decl/Kokkos_Declare_SERIAL.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosKernels_Half.hpp:
+
+/usr/include/c++/10/bits/stl_vector.h:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp:
 
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/file.h:
 
@@ -3895,13 +3887,79 @@ test_paraReal.cc:
 
 /usr/include/boost/mpl/set/aux_/insert_range_impl.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/boost/preprocessor/arithmetic/detail/div_base.hpp:
+
+/usr/include/time.h:
+
+/usr/include/boost/intrusive/detail/config_end.hpp:
+
+/usr/include/boost/iterator/function_output_iterator.hpp:
+
+/usr/include/boost/mpl/limits/arity.hpp:
+
+/usr/include/boost/mpl/same_as.hpp:
+
+/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_bits.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Functional.hpp:
+
+/usr/include/boost/parameter/aux_/template_keyword.hpp:
+
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/op.h:
 
-/usr/include/boost/iterator/detail/enable_if.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
-/usr/include/boost/iostreams/detail/double_object.hpp:
+/usr/include/boost/type_traits/remove_volatile.hpp:
 
-/usr/include/c++/10/type_traits:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_SerializationTraitsHelpers.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Exceptions.hpp:
+
+/usr/include/boost/iostreams/device/array.hpp:
+
+/usr/include/boost/intrusive/pointer_rebind.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_ExecSpaceInitializer.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/bundled/tbb/aligned_space.h:
+
+/home/ubuntu/Documents/petsc-3.18.6/include/petscctable.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/c++/10/cmath:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/numbers.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_getBaseObjVoidPtr.hpp:
+
+/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_iterate.h:
+
+/usr/include/sched.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_NumericTraits.hpp:
+
+/usr/include/c++/10/bits/slice_array.h:
+
+/usr/include/boost/mpl/aux_/reverse_iter_fold_impl.hpp:
+
+/home/ubuntu/Documents/p4est-2.3.2/FAST/include/sc_uint128.h:
+
+/usr/include/boost/move/detail/iterator_traits.hpp:
+
+/usr/include/pthread.h:
+
+/usr/include/boost/iostreams/detail/is_iterator_range.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ArrayRCP.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Memory_Fence.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/gthr.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_WorkGraphPolicy.hpp:
 
@@ -3909,7 +3967,29 @@ test_paraReal.cc:
 
 /usr/include/boost/parameter/aux_/result_of0.hpp:
 
+/usr/include/boost/type_traits/add_pointer.hpp:
+
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/info.h:
+
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request.h:
+
+/usr/include/boost/mpl/aux_/static_cast.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_CopyViews.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/less_equal.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_MultiVector_fwd.hpp:
+
+/usr/include/boost/serialization/vector.hpp:
+
 /usr/include/c++/10/exception:
+
+/home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStepBase.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskNode.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskResult.hpp:
 
 /usr/include/boost/type_traits/add_volatile.hpp:
 
@@ -3921,17 +4001,19 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ENull.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_ExecSpaceInitializer.hpp:
+/usr/include/c++/10/bits/shared_ptr.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Exceptions.hpp:
+/usr/include/boost/iostreams/detail/enable_if_stream.hpp:
 
-/usr/include/boost/iostreams/device/array.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
-/usr/include/boost/intrusive/pointer_rebind.hpp:
+/usr/include/c++/10/bits/stl_construct.h:
 
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/bundled/tbb/aligned_space.h:
+/usr/include/boost/smart_ptr/scoped_ptr.hpp:
 
-/home/ubuntu/Documents/petsc-3.18.6/include/petscctable.h:
+/usr/include/c++/10/cwctype:
+
+/usr/include/c++/10/bits/unordered_set.h:
 
 /home/ubuntu/Documents/p4est-2.3.2/FAST/include/p8est_connectivity.h:
 
@@ -3963,22 +4045,6 @@ test_paraReal.cc:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/ctype_base.h:
 
-/usr/include/libintl.h:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/fe_data.h:
-
-/usr/include/boost/mpl/greater.hpp:
-
-/usr/include/sched.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_NumericTraits.hpp:
-
-/usr/include/c++/10/bits/slice_array.h:
-
-/usr/include/boost/mpl/aux_/reverse_iter_fold_impl.hpp:
-
-/home/ubuntu/Documents/p4est-2.3.2/FAST/include/sc_uint128.h:
-
 /usr/include/c++/10/bits/memoryfwd.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_FEMultiVector_fwd.hpp:
@@ -3990,26 +4056,6 @@ test_paraReal.cc:
 /usr/include/c++/10/bits/basic_string.tcc:
 
 /usr/include/boost/mpl/aux_/insert_impl.hpp:
-
-/usr/include/c++/10/ext/string_conversions.h:
-
-/home/ubuntu/Desktop/PacsProject/project/include/GradientFlow.h:
-
-/usr/include/boost/signals2/shared_connection_block.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/numbers.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_getBaseObjVoidPtr.hpp:
-
-/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_iterate.h:
-
-/usr/include/c++/10/cmath:
-
-/usr/include/boost/type_traits/is_arithmetic.hpp:
-
-/usr/include/alloca.h:
-
-/usr/include/boost/multi_index/detail/ord_index_ops.hpp:
 
 /usr/include/c++/10/bits/stl_iterator_base_funcs.h:
 
@@ -4049,9 +4095,25 @@ test_paraReal.cc:
 
 /usr/include/c++/10/bits/stl_pair.h:
 
+/usr/include/x86_64-linux-gnu/bits/wchar2-decl.h:
+
 /usr/include/boost/multi_index/identity_fwd.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/multigrid/mg_constrained_dofs.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterEntryValidator.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/string.h:
+
+/usr/include/boost/multi_index/identity.hpp:
+
+/usr/include/boost/preprocessor/seq/size.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/fe_dgq.h:
+
+/usr/include/boost/mpl/aux_/config/dtp.hpp:
 
 /usr/include/boost/mpl/aux_/config/eti.hpp:
 
@@ -4060,10 +4122,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_CombineMode.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
-
-/usr/include/c++/10/bits/shared_ptr.h:
-
-/usr/include/boost/iostreams/detail/enable_if_stream.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2.hpp:
 
@@ -4083,35 +4141,103 @@ test_paraReal.cc:
 
 /usr/lib/gcc/x86_64-linux-gnu/10/include/stddef.h:
 
-/usr/include/boost/preprocessor/control/iif.hpp:
+/usr/include/c++/10/bits/unique_ptr.h:
+
+/usr/include/boost/range/difference_type.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/avx512pfintrin.h:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/c++locale.h:
+
+/usr/include/boost/mpl/aux_/traits_lambda_spec.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/qprojector.h:
+
+/usr/include/c++/10/mutex:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCore_Config_PostInclude.hpp:
+
+/usr/include/c++/10/bits/nested_exception.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosClassic_DefaultNode_config.h:
+
+/usr/include/boost/signals2/detail/unique_lock.hpp:
+
+/usr/include/boost/mpl/aux_/lambda_support.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
+
+/usr/include/boost/type_traits/is_arithmetic.hpp:
+
+/usr/include/alloca.h:
+
+/usr/include/boost/multi_index/detail/ord_index_ops.hpp:
 
 /usr/include/c++/10/atomic:
 
-/usr/include/boost/preprocessor/arithmetic/detail/div_base.hpp:
+/usr/include/boost/preprocessor/control/iif.hpp:
 
-/usr/include/time.h:
+/usr/include/x86_64-linux-gnu/c++/10/bits/atomic_word.h:
 
-/usr/include/boost/intrusive/detail/config_end.hpp:
+/usr/include/c++/10/bits/locale_facets_nonio.h:
 
-/usr/include/boost/iterator/function_output_iterator.hpp:
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/evaluation_kernels.h:
 
-/usr/include/boost/mpl/limits/arity.hpp:
+/usr/include/boost/parameter/aux_/pack/parameter_requirements.hpp:
 
-/usr/include/boost/mpl/same_as.hpp:
+/usr/include/c++/10/bits/stl_set.h:
 
-/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_bits.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Functional.hpp:
-
-/usr/include/boost/parameter/aux_/template_keyword.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/10/include/bmi2intrin.h:
 
+/home/ubuntu/Documents/petsc-3.18.6/include/petscversion.h:
+
+/usr/include/c++/10/condition_variable:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/stdarg.h:
+
+/usr/include/c++/10/bits/move.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_LongLongSerialDenseVector.h:
+
+/home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParaReal.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
+
+/usr/include/c++/10/ostream:
+
+/usr/include/c++/10/ext/alloc_traits.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/avx512fintrin.h:
+
+/usr/include/c++/10/bits/allocated_ptr.h:
+
 /usr/include/boost/type_traits/is_scalar.hpp:
 
-/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_communication.h:
+/usr/include/c++/10/cerrno:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Core_fwd.hpp:
+/usr/include/boost/move/algo/unique.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/traits/Kokkos_GraphKernelTrait.hpp:
+
+/usr/include/boost/move/detail/placement_new.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrminf_spec.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2-decl.h:
+
+/usr/include/boost/serialization/map.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/mpi_remote_point_evaluation.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Pair.hpp:
+
+/usr/include/boost/mpl/aux_/include_preprocessed.hpp:
+
+/usr/include/boost/mpl/aux_/adl_barrier.hpp:
 
 /usr/include/boost/preprocessor/slot/slot.hpp:
 
@@ -4133,110 +4259,6 @@ test_paraReal.cc:
 
 /usr/include/boost/config/platform/linux.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosCore_Config_PostInclude.hpp:
-
-/usr/include/c++/10/bits/nested_exception.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/avx512pfintrin.h:
-
-/usr/include/x86_64-linux-gnu/c++/10/bits/c++locale.h:
-
-/usr/include/boost/mpl/aux_/traits_lambda_spec.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosClassic_DefaultNode_config.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/home/ubuntu/Documents/petsc-3.18.6/include/petscversion.h:
-
-/usr/include/c++/10/condition_variable:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/stdarg.h:
-
-/home/ubuntu/Desktop/PacsProject/project/include/GradientFlowBase.h:
-
-/usr/include/boost/range/begin.hpp:
-
-/usr/include/boost/config/auto_link.hpp:
-
-/usr/include/boost/mpl/print.hpp:
-
-/usr/include/c++/10/bits/stl_multimap.h:
-
-/usr/include/x86_64-linux-gnu/c++/10/bits/c++allocator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/xsaveoptintrin.h:
-
-/usr/include/boost/bind/mem_fn_template.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Util.hpp:
-
-/usr/include/boost/archive/basic_archive.hpp:
-
-/usr/include/c++/10/bits/stl_heap.h:
-
-/usr/include/boost/mpl/size_t_fwd.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/10/bits/time_members.h:
-
-/usr/include/boost/multi_index/detail/bidir_node_iterator.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/10/bits/atomic_word.h:
-
-/usr/include/c++/10/bits/locale_facets_nonio.h:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/evaluation_kernels.h:
-
-/usr/include/boost/parameter/aux_/pack/parameter_requirements.hpp:
-
-/usr/include/c++/10/bits/stl_set.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
-
-/usr/include/c++/10/bits/move.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/c++/10/bits/stl_construct.h:
-
-/usr/include/boost/smart_ptr/scoped_ptr.hpp:
-
-/usr/include/c++/10/cwctype:
-
-/usr/include/c++/10/bits/unordered_set.h:
-
-/home/ubuntu/Desktop/PacsProject/project/include/ParaReal.h:
-
-/usr/include/boost/archive/binary_iarchive_impl.hpp:
-
-/usr/include/boost/parameter/aux_/pack/tag_deduced.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/lac/vector_element_access.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Directory_decl.hpp:
-
-/usr/include/boost/preprocessor/control/detail/while.hpp:
-
-/usr/include/boost/range/size.hpp:
-
-/home/ubuntu/Documents/petsc-3.18.6/include/petscistypes.h:
-
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/functions.h:
-
-/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
-
-/usr/include/boost/type_traits/is_pod.hpp:
-
-/usr/include/boost/config/stdlib/libstdcpp3.hpp:
-
-/usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp:
-
-/usr/include/c++/10/new:
-
-/usr/include/x86_64-linux-gnu/asm/types.h:
-
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/c++/10/bits/postypes.h:
@@ -4253,9 +4275,59 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/traits/Kokkos_LaunchBoundsTrait.hpp:
 
+/usr/include/boost/range/size.hpp:
+
+/home/ubuntu/Documents/petsc-3.18.6/include/petscistypes.h:
+
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/functions.h:
+
+/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
+
+/usr/include/boost/type_traits/is_pod.hpp:
+
+/usr/include/c++/10/bits/stl_multimap.h:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/c++allocator.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/xsaveoptintrin.h:
+
+/usr/include/libgen.h:
+
+/usr/include/boost/mpl/push_front_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/usr/include/boost/bind/mem_fn_template.hpp:
+
+/usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp:
+
+/usr/include/c++/10/new:
+
+/usr/include/x86_64-linux-gnu/asm/types.h:
+
+/usr/include/boost/config/stdlib/libstdcpp3.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Util.hpp:
+
+/usr/include/boost/archive/basic_archive.hpp:
+
+/usr/include/c++/10/bits/stl_heap.h:
+
+/usr/include/boost/mpl/size_t_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/time_members.h:
+
+/usr/include/boost/multi_index/detail/bidir_node_iterator.hpp:
+
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_avail.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/shape_info.h:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/fe_data.h:
+
+/usr/include/libintl.h:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/greater.hpp:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/apply_fwd.hpp:
 
@@ -4274,10 +4346,6 @@ test_paraReal.cc:
 /usr/include/c++/10/concepts:
 
 /usr/include/boost/signals2/detail/foreign_ptr.hpp:
-
-/usr/include/boost/version.hpp:
-
-/usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
 
 /usr/include/boost/move/traits.hpp:
 
@@ -4307,6 +4375,8 @@ test_paraReal.cc:
 
 /usr/include/x86_64-linux-gnu/asm/unistd.h:
 
+/home/ubuntu/Documents/p4est-2.3.2/FAST/include/p4est_communication.h:
+
 /usr/include/c++/10/bits/stringfwd.h:
 
 /usr/include/c++/10/bits/stl_iterator_base_types.h:
@@ -4334,8 +4404,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_Behavior.hpp:
 
 /usr/include/boost/mpl/aux_/push_front_impl.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/geometry_info.h:
 
 /usr/include/c++/10/bits/shared_ptr_base.h:
 
@@ -4379,35 +4447,13 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_HostThreadTeam.hpp:
 
-/usr/include/boost/move/core.hpp:
-
-/usr/include/boost/preprocessor/tuple/detail/is_single_return.hpp:
-
 /usr/include/c++/10/bits/stl_iterator.h:
 
 /usr/include/boost/signals2/detail/result_type_wrapper.hpp:
 
-/usr/include/boost/move/detail/iterator_traits.hpp:
-
-/usr/include/pthread.h:
-
-/usr/include/boost/preprocessor/punctuation/comma.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Macros.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_TieBreak_fwd.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/10/bits/c++io.h:
-
 /usr/include/c++/10/map:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp:
-
-/usr/include/boost/signals2/detail/unique_lock.hpp:
-
-/usr/include/boost/mpl/aux_/lambda_support.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/lac/vector_type_traits.h:
 
@@ -4423,10 +4469,6 @@ test_paraReal.cc:
 
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/topology_inln.h:
 
-/usr/include/boost/mpl/aux_/ptr_to_ref.hpp:
-
-/usr/include/c++/10/cassert:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_isInterComm.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_SrcDistObject.hpp:
@@ -4439,17 +4481,35 @@ test_paraReal.cc:
 
 /usr/include/boost/serialization/config.hpp:
 
-/usr/include/boost/multi_index/detail/is_transparent.hpp:
+/usr/include/c++/10/ext/type_traits.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterList.hpp:
+/usr/include/boost/signals2/detail/signals_common_macros.hpp:
 
-/usr/include/boost/iostreams/detail/is_iterator_range.hpp:
+/usr/include/boost/tuple/tuple.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ArrayRCP.hpp:
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Memory_Fence.hpp:
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/array_view.h:
 
-/usr/include/x86_64-linux-gnu/c++/10/bits/gthr.h:
+/usr/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp:
+
+/usr/include/nlohmann/detail/conversions/to_chars.hpp:
+
+/usr/include/boost/iostreams/detail/adapter/range_adapter.hpp:
+
+/usr/include/boost/mpl/insert_range.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_AcquireUniqueTokenImpl.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/thread_local_storage.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_MultipleTaskQueue.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/vector_data_exchange.h:
+
+/usr/include/boost/container/detail/std_fwd.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_XMLObjectImplem.hpp:
 
 /usr/include/boost/type_traits/conditional.hpp:
 
@@ -4487,6 +4547,8 @@ test_paraReal.cc:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
+/usr/include/boost/serialization/split_free.hpp:
+
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/traits/Kokkos_Traits_fwd.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/10/include/syslimits.h:
@@ -4505,12 +4567,6 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_UniqueToken.hpp:
 
-/usr/include/c++/10/bits/sstream.tcc:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_mpiIsInitialized.hpp:
-
-/usr/include/boost/preprocessor/detail/check.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ScalarTraits.hpp:
 
 /usr/include/boost/iostreams/imbue.hpp:
@@ -4527,13 +4583,23 @@ test_paraReal.cc:
 
 /usr/include/c++/10/bits/range_cmp.h:
 
-/usr/include/stdio.h:
+/usr/include/features-time64.h:
 
-/usr/include/boost/mpl/int_fwd.hpp:
+/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/win_inln.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_Map.h:
+/usr/include/x86_64-linux-gnu/c++/10/bits/gthr-default.h:
 
-/usr/include/boost/mpl/sequence_tag_fwd.hpp:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Details_DistributorActor.hpp:
+
+/usr/include/c++/10/bits/exception.h:
+
+/home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParallelBase.h:
+
+/usr/include/boost/parameter/template_keyword.hpp:
+
+/usr/include/boost/mpl/aux_/config/use_preprocessed.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/10/include/tbmintrin.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_TestForException.hpp:
 
@@ -4549,11 +4615,73 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_boundary.h:
 
-/usr/include/features-time64.h:
+/usr/include/stdio.h:
 
-/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/win_inln.h:
+/usr/include/boost/mpl/int_fwd.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/10/bits/gthr-default.h:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_Map.h:
+
+/usr/include/boost/mpl/sequence_tag_fwd.hpp:
+
+/usr/include/boost/type_traits/has_plus_assign.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_TieBreak_fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/10/bits/c++io.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Macros.hpp:
+
+/usr/include/boost/preprocessor/punctuation/comma.hpp:
+
+/usr/include/boost/preprocessor/array/elem.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
+
+/usr/include/c++/10/cassert:
+
+/usr/include/boost/mpl/aux_/ptr_to_ref.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/communication_pattern_base.h:
+
+/usr/include/boost/preprocessor/control/deduce_d.hpp:
+
+/usr/include/boost/preprocessor/comparison/less_equal.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_KokkosRefactor_Details_MultiVectorLocalDeepCopy.hpp:
+
+/usr/include/c++/10/cstddef:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_RCPNode.hpp:
+
+/usr/include/linux/errno.h:
+
+/usr/include/boost/version.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/geometry_info.h:
+
+/usr/include/boost/type_traits/remove_pointer.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Extents.hpp:
+
+/usr/include/boost/archive/basic_binary_oarchive.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Load.hpp:
+
+/usr/include/boost/bind/placeholders.hpp:
+
+/usr/include/boost/mpl/clear_fwd.hpp:
+
+/usr/include/boost/type_traits/cv_traits.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Core_fwd.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_ParameterList.hpp:
+
+/usr/include/boost/multi_index/detail/is_transparent.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Tuners.hpp:
 
@@ -4581,8 +4709,6 @@ test_paraReal.cc:
 
 /usr/include/c++/10/backward/binders.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskNode.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_VerbosityLevel.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Array.hpp:
@@ -4598,6 +4724,12 @@ test_paraReal.cc:
 /usr/include/c++/10/utility:
 
 /usr/include/boost/multi_index/detail/seq_index_ops.hpp:
+
+/usr/include/boost/iostreams/detail/adapter/non_blocking_adapter.hpp:
+
+/usr/include/boost/type_traits/is_destructible.hpp:
+
+/usr/include/boost/serialization/split_member.hpp:
 
 /usr/include/c++/10/bits/uses_allocator.h:
 
@@ -4725,6 +4857,16 @@ test_paraReal.cc:
 
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm1_tpl_spec_decl.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/boost/throw_exception.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Import_def.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Tags.hpp:
+
 /home/ubuntu/Documents/petsc-3.18.6/include/petscsystypes.h:
 
 /usr/include/boost/container/detail/construct_in_place.hpp:
@@ -4744,10 +4886,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Profiling.hpp:
 
 /usr/include/boost/mpl/logical.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/array_view.h:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_ExecPolicy.hpp:
 
@@ -4849,8 +4987,6 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/lac/vector.h:
 
-/usr/include/c++/10/ostream:
-
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Profiling_DeviceInfo.hpp:
@@ -4881,12 +5017,6 @@ test_paraReal.cc:
 
 /usr/include/boost/mpl/vector/aux_/back.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_Pair.hpp:
-
-/usr/include/boost/mpl/aux_/include_preprocessed.hpp:
-
-/usr/include/boost/mpl/aux_/adl_barrier.hpp:
-
 /usr/include/boost/type_traits/is_signed.hpp:
 
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/mpicxx.h:
@@ -4906,8 +5036,6 @@ test_paraReal.cc:
 /usr/include/boost/optional/detail/optional_trivially_copyable_base.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/bundled/tbb/tbb_config.h:
-
-/usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
 
 /usr/include/boost/mpl/O1_size_fwd.hpp:
 
@@ -4945,10 +5073,6 @@ test_paraReal.cc:
 
 /usr/include/c++/10/array:
 
-/usr/include/boost/mpl/aux_/has_tag.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskQueue.hpp:
-
 /home/ubuntu/Documents/petsc-3.18.6/include/petscoptions.h:
 
 /usr/include/c++/10/bits/algorithmfwd.h:
@@ -4960,22 +5084,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_VerboseObject.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/quadrature_lib.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_TaskScheduler.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/cldemoteintrin.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_LinkedListNode.hpp:
-
-/usr/include/boost/preprocessor/variadic/size.hpp:
-
-/usr/include/libgen.h:
-
-/usr/include/x86_64-linux-gnu/bits/time64.h:
-
-/usr/include/boost/mpl/push_front_fwd.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_decl.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_TaskScheduler_fwd.hpp:
 
@@ -5001,15 +5109,29 @@ test_paraReal.cc:
 
 /usr/include/c++/10/backward/auto_ptr.h:
 
-/usr/include/wchar.h:
-
-/usr/include/boost/is_placeholder.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Epetra_CompObject.h:
 
 /home/ubuntu/Documents/petsc-3.18.6/include/petscdrawtypes.h:
 
+/usr/include/wchar.h:
+
+/usr/include/boost/is_placeholder.hpp:
+
 /usr/include/c++/10/bits/ios_base.h:
+
+/usr/include/boost/range/iterator.hpp:
+
+/usr/include/boost/preprocessor/repetition/enum_trailing_params.hpp:
+
+/usr/include/boost/preprocessor/list/fold_right.hpp:
+
+/usr/include/boost/preprocessor/punctuation/comma_if.hpp:
+
+/usr/include/boost/iostreams/positioning.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_update.hpp:
+
+/usr/include/boost/mpl/assert.hpp:
 
 /usr/include/boost/signals2/detail/slot_groups.hpp:
 
@@ -5031,8 +5153,6 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Fetch_Sub.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskResult.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_Assert.hpp:
 
 /usr/include/boost/variant/detail/std_hash.hpp:
@@ -5049,10 +5169,6 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskQueueMemoryManager.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosKernels_helpers.hpp:
-
-/usr/include/boost/multi_index/member.hpp:
-
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskQueueCommon.hpp:
 
 /usr/include/boost/iostreams/device/null.hpp:
@@ -5060,6 +5176,10 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/traits/Kokkos_WorkItemPropertyTrait.hpp:
 
 /usr/include/boost/multi_index/indexed_by.hpp:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosKernels_helpers.hpp:
+
+/usr/include/boost/multi_index/member.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskQueueMultiple.hpp:
 
@@ -5073,35 +5193,17 @@ test_paraReal.cc:
 
 /usr/include/boost/iostreams/constants.hpp:
 
-/usr/include/boost/preprocessor/iteration/detail/iter/forward1.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria_accessor.templates.h:
-
-/usr/include/boost/preprocessor/iteration/detail/bounds/upper1.hpp:
-
-/usr/include/boost/preprocessor/facilities/expand.hpp:
-
 /usr/include/boost/mpl/aux_/config/arrays.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_SimpleTaskScheduler.hpp:
-
-/usr/include/nlohmann/detail/conversions/to_chars.hpp:
-
-/usr/include/boost/iostreams/detail/adapter/range_adapter.hpp:
-
-/usr/include/boost/mpl/insert_range.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_AcquireUniqueTokenImpl.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/thread_local_storage.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_MultipleTaskQueue.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_ScratchSpace.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/iterator_range.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_HostBarrier.hpp:
+
+/home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/NumericalAlgorithmBase.h:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_AnonymousSpace.hpp:
 
@@ -5157,24 +5259,6 @@ test_paraReal.cc:
 
 /usr/include/boost/move/detail/destruct_n.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
-/usr/include/boost/preprocessor/array/elem.hpp:
-
-/usr/include/boost/type_traits/is_destructible.hpp:
-
-/usr/include/boost/serialization/split_member.hpp:
-
-/usr/include/boost/iostreams/detail/adapter/non_blocking_adapter.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_CopyViews.hpp:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/less_equal.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_MultiVector_fwd.hpp:
-
-/usr/include/boost/serialization/vector.hpp:
-
 /usr/include/c++/10/bits/std_function.h:
 
 /usr/include/boost/type_traits/integral_constant.hpp:
@@ -5186,14 +5270,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/fe_values.h:
 
 /usr/include/boost/serialization/nvp.hpp:
-
-/usr/include/c++/10/bits/unique_ptr.h:
-
-/usr/include/c++/10/ext/alloc_traits.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/avx512fintrin.h:
-
-/usr/include/c++/10/bits/allocated_ptr.h:
 
 /usr/include/c++/10/bits/erase_if.h:
 
@@ -5212,10 +5288,6 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2w_squared.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2_impl.hpp:
-
-/usr/include/boost/tuple/detail/tuple_basic.hpp:
-
-/usr/include/boost/mpl/aux_/nested_type_wknd.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Directory.hpp:
 
@@ -5241,12 +5313,6 @@ test_paraReal.cc:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
-/usr/include/boost/container/detail/std_fwd.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Teuchos_XMLObjectImplem.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/vector_data_exchange.h:
-
 /usr/include/boost/mpl/apply.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
@@ -5260,6 +5326,8 @@ test_paraReal.cc:
 /usr/include/boost/archive/binary_iarchive.hpp:
 
 /usr/include/unistd.h:
+
+/home/ubuntu/Desktop/PacsProject/project/include/utils/LinearSystem.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
@@ -5309,10 +5377,6 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/derivative_form.h:
 
-/usr/include/boost/mpl/lambda_fwd.hpp:
-
-/usr/include/boost/geometry/core/point_type.hpp:
-
 /usr/include/boost/mpl/aux_/config/msvc.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/KokkosExp_Host_IterateTile.hpp:
@@ -5322,12 +5386,6 @@ test_paraReal.cc:
 /usr/include/boost/type_traits/is_same.hpp:
 
 /usr/include/boost/mp11/detail/mp_count.hpp:
-
-/usr/include/boost/preprocessor/seq/size.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/fe_dgq.h:
-
-/usr/include/boost/mpl/aux_/config/dtp.hpp:
 
 /usr/include/boost/variant/detail/apply_visitor_unary.hpp:
 
@@ -5413,39 +5471,23 @@ test_paraReal.cc:
 
 /usr/include/boost/preprocessor/control/expr_iif.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/select.h:
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_TaskQueue.hpp:
 
-/usr/include/boost/throw_exception.hpp:
+/usr/include/boost/mpl/aux_/has_tag.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Tpetra_Import_def.hpp:
+/usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Tags.hpp:
+/usr/lib/gcc/x86_64-linux-gnu/10/include/avx2intrin.h:
 
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm1_tpl_spec_decl.hpp:
+/usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
 
-/usr/include/boost/preprocessor/logical/compl.hpp:
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/boost/mpl/greater.hpp:
+
+/usr/include/boost/serialization/type_info_implementation.hpp:
 
 /usr/include/boost/serialization/serialization.hpp:
-
-/usr/include/boost/range/iterator.hpp:
-
-/usr/include/boost/mpl/assert.hpp:
-
-/usr/include/boost/preprocessor/repetition/enum_trailing_params.hpp:
-
-/usr/include/boost/preprocessor/list/fold_right.hpp:
-
-/usr/include/boost/preprocessor/punctuation/comma_if.hpp:
-
-/usr/include/boost/iostreams/positioning.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_update.hpp:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/impl/Kokkos_Atomic_Generic_Secondary.hpp:
-
-/usr/include/boost/preprocessor/facilities/overload.hpp:
-
-/usr/include/boost/preprocessor/tuple/rem.hpp:
 
 /usr/include/boost/serialization/strong_typedef.hpp:
 
@@ -5480,6 +5522,8 @@ test_paraReal.cc:
 /usr/include/boost/type_traits/is_constructible.hpp:
 
 /usr/include/boost/serialization/access.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
 /usr/include/boost/type_traits/is_polymorphic.hpp:
 
@@ -5634,6 +5678,12 @@ test_paraReal.cc:
 /usr/include/boost/mpl/at.hpp:
 
 /usr/include/boost/multi_index/detail/seq_index_node.hpp:
+
+/usr/include/boost/range/begin.hpp:
+
+/usr/include/boost/config/auto_link.hpp:
+
+/usr/include/boost/mpl/print.hpp:
 
 /usr/include/boost/serialization/singleton.hpp:
 
@@ -5831,6 +5881,10 @@ test_paraReal.cc:
 
 /usr/include/boost/iostreams/detail/is_dereferenceable.hpp:
 
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_point_gradient.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_decl.hpp:
+
 /usr/lib/gcc/x86_64-linux-gnu/10/include/clwbintrin.h:
 
 /usr/include/boost/iostreams/stream_buffer.hpp:
@@ -5901,11 +5955,11 @@ test_paraReal.cc:
 
 /usr/include/boost/move/utility.hpp:
 
-/usr/include/boost/mpl/aux_/is_msvc_eti_arg.hpp:
-
 /usr/include/boost/mpl/aux_/preprocessed/gcc/vector.hpp:
 
 /usr/include/boost/mpl/aux_/config/adl.hpp:
+
+/usr/include/boost/mpl/aux_/is_msvc_eti_arg.hpp:
 
 /usr/include/boost/serialization/collections_load_imp.hpp:
 
@@ -5943,10 +5997,6 @@ test_paraReal.cc:
 
 /usr/include/boost/serialization/utility.hpp:
 
-/usr/include/boost/serialization/map.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/mpi_remote_point_evaluation.h:
-
 /usr/include/boost/signals2.hpp:
 
 /usr/include/boost/signals2/deconstruct_ptr.hpp:
@@ -5978,6 +6028,12 @@ test_paraReal.cc:
 /usr/include/nlohmann/detail/abi_macros.hpp:
 
 /usr/include/boost/none_t.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/fe_evaluation_data.h:
+
+/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_TeuchosCommAdapters.hpp:
+
+/usr/include/boost/utility/compare_pointees.hpp:
 
 /usr/include/boost/optional/detail/optional_factory_support.hpp:
 
@@ -6062,6 +6118,8 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_decl.hpp:
 
 /usr/include/boost/mpl/aux_/config/compiler.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
 
 /usr/include/boost/signals2/detail/scope_guard.hpp:
 
@@ -6367,12 +6425,6 @@ test_paraReal.cc:
 
 /usr/include/boost/mpl/limits/vector.hpp:
 
-/usr/include/boost/parameter/template_keyword.hpp:
-
-/usr/include/boost/mpl/aux_/config/use_preprocessed.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/10/include/tbmintrin.h:
-
 /usr/include/boost/mp11/integral.hpp:
 
 /usr/include/boost/mp11/detail/mp_fold.hpp:
@@ -6479,6 +6531,8 @@ test_paraReal.cc:
 
 /usr/include/boost/parameter/aux_/tagged_argument.hpp:
 
+/usr/include/boost/signals2/shared_connection_block.hpp:
+
 /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/constants.h:
 
 /usr/include/c++/10/bitset:
@@ -6573,11 +6627,13 @@ test_paraReal.cc:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/function.h:
 
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/function_time.h:
 
-/usr/include/boost/serialization/traits.hpp:
-
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/memory_space.h:
+
+/usr/include/boost/serialization/traits.hpp:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/logstream.h:
 
@@ -6788,6 +6844,8 @@ test_paraReal.cc:
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2w.hpp:
 
 /home/ubuntu/Documents/trilinos-release-13-2-0/include/KokkosBlas1_nrm2w_impl.hpp:
+
+/home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStep.h:
 
 /usr/include/c++/10/debug/assertions.h:
 
@@ -7293,6 +7351,10 @@ test_paraReal.cc:
 
 /usr/include/boost/mpl/set/aux_/clear_impl.hpp:
 
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_integrate_difference.h:
+
+/usr/include/boost/mpl/set/aux_/set0.hpp:
+
 /usr/include/boost/mpl/base.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/10/include/waitpkgintrin.h:
@@ -7306,6 +7368,10 @@ test_paraReal.cc:
 /usr/include/boost/mpl/set/aux_/value_type_impl.hpp:
 
 /usr/include/boost/mpl/set/aux_/begin_end_impl.hpp:
+
+/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/mapping_cartesian.h:
+
+/usr/include/boost/mpl/set/aux_/iterator.hpp:
 
 /usr/include/boost/mpl/has_key.hpp:
 
@@ -7342,6 +7408,10 @@ test_paraReal.cc:
 /usr/include/boost/multi_index/ordered_index_fwd.hpp:
 
 /usr/include/boost/multi_index/detail/vartempl_support.hpp:
+
+/usr/include/boost/mpl/aux_/nested_type_wknd.hpp:
+
+/usr/include/boost/tuple/detail/tuple_basic.hpp:
 
 /usr/include/boost/multi_index/detail/index_saver.hpp:
 
@@ -7386,33 +7456,3 @@ test_paraReal.cc:
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/evaluation_flags.h:
 
 /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/dof_info.h:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/face_info.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/Kokkos_TeuchosCommAdapters.hpp:
-
-/usr/include/boost/utility/compare_pointees.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/matrix_free/fe_evaluation_data.h:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/polynomial.h:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/non_matching/mapping_info.h:
-
-/usr/include/boost/mpl/set/aux_/iterator.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/fe/mapping_cartesian.h:
-
-/usr/include/c++/10/mutex:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/qprojector.h:
-
-/usr/include/boost/mpl/set/aux_/set0.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_integrate_difference.h:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_mean_value.h:
-
-/home/ubuntu/Documents/trilinos-release-13-2-0/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_decl.hpp:
-
-/home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/numerics/vector_tools_point_gradient.h:

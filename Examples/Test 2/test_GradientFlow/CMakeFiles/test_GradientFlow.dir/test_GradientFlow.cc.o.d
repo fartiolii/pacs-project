@@ -1,11 +1,11 @@
 CMakeFiles/test_GradientFlow.dir/test_GradientFlow.cc.o: \
  /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/test_GradientFlow.cc \
  /usr/include/stdc-predef.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/GradientFlow.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/NumericalAlgorithmBase.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/DescentStep.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/DescentStepBase.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/LinearSystem.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/numerical_methods/GradientFlow.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/numerical_methods/NumericalAlgorithmBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/utils/DescentStep.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/utils/DescentStepBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/../../../include/utils/LinearSystem.h \
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria.h \
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/config.h \
  /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h \

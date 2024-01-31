@@ -4,12 +4,12 @@
 CMakeFiles/test_paraFlow.dir/test_paraFlow.cc.o
  /home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaFlow/test_paraFlow.cc
  /usr/include/stdc-predef.h
- /home/ubuntu/Desktop/PacsProject/project/include/ParaFlow.h
- /home/ubuntu/Desktop/PacsProject/project/include/ParallelBase.h
- /home/ubuntu/Desktop/PacsProject/project/include/NumericalAlgorithmBase.h
- /home/ubuntu/Desktop/PacsProject/project/include/DescentStep.h
- /home/ubuntu/Desktop/PacsProject/project/include/DescentStepBase.h
- /home/ubuntu/Desktop/PacsProject/project/include/LinearSystem.h
+ /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParaFlow.h
+ /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/ParallelBase.h
+ /home/ubuntu/Desktop/PacsProject/project/include/numerical_methods/NumericalAlgorithmBase.h
+ /home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStep.h
+ /home/ubuntu/Desktop/PacsProject/project/include/utils/DescentStepBase.h
+ /home/ubuntu/Desktop/PacsProject/project/include/utils/LinearSystem.h
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria.h
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/config.h
  /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal"
+CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal"
+CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal"
 
 # Utility rule file for strip_comments.
 
@@ -67,7 +67,7 @@ include CMakeFiles/strip_comments.dir/compiler_depend.make
 include CMakeFiles/strip_comments.dir/progress.make
 
 CMakeFiles/strip_comments:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
 	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' test_paraReal.cc
 
 strip_comments: CMakeFiles/strip_comments
@@ -83,6 +83,6 @@ CMakeFiles/strip_comments.dir/clean:
 .PHONY : CMakeFiles/strip_comments.dir/clean
 
 CMakeFiles/strip_comments.dir/depend:
-	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_ParaReal/CMakeFiles/strip_comments.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_ParaReal/CMakeFiles/strip_comments.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/strip_comments.dir/depend
 

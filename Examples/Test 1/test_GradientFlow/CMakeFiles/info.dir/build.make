@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow"
+CMAKE_SOURCE_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow"
+CMAKE_BINARY_DIR = "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow"
 
 # Utility rule file for info.
 
@@ -67,7 +67,7 @@ include CMakeFiles/info.dir/compiler_depend.make
 include CMakeFiles/info.dir/progress.make
 
 CMakeFiles/info:
-	/usr/bin/cmake -P /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 1/test_GradientFlow/CMakeFiles/print_usage.cmake
+	/usr/bin/cmake -P /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_GradientFlow/CMakeFiles/print_usage.cmake
 
 info: CMakeFiles/info
 info: CMakeFiles/info.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/info.dir/clean:
 .PHONY : CMakeFiles/info.dir/clean
 
 CMakeFiles/info.dir/depend:
-	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 1/test_GradientFlow/CMakeFiles/info.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow" "/home/ubuntu/Desktop/PacsProject/project/Examples/Test 2/test_GradientFlow/CMakeFiles/info.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/info.dir/depend
 

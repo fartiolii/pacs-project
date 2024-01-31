@@ -1,10 +1,11 @@
 CMakeFiles/test_paraFlowS.dir/test_paraFlowS.cc.o: \
- /home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS/test_paraFlowS.cc \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaFlowS/test_paraFlowS.cc \
  /usr/include/stdc-predef.h \
- /home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS/../../include/ParaFlowS.h \
- /home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS/../../include/GradientFlow.h \
- /home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS/../../include/GradientFlowBase.h \
- /home/ubuntu/Desktop/PacsProject/project/tests/test_ParaFlowS/../../include/LinearSystem.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaFlowS/../../../include/numerical_methods/ParaFlowS.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaFlowS/../../../include/numerical_methods/NumericalAlgorithmBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaFlowS/../../../include/utils/DescentStep.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaFlowS/../../../include/utils/DescentStepBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaFlowS/../../../include/utils/LinearSystem.h \
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria.h \
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/config.h \
  /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h \

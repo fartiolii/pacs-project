@@ -1,22 +1,18 @@
 #include <GradientFlow.h>
 
 using namespace dealii;
+constexpr int dim=2;
 
-
-///@note: read parameters from a file for more flexibility
 
 int main()
 {
-    constexpr int dim=2;
-
-    GradientFlowEuler<dim> gf_Euler;
-    GradientFlowAdam<dim> gf_Adam;
-
-    //gf_Euler.set_step_size(1.5);
-    //gf_Euler.run();
-
-    gf_Adam.set_step_size(1.0);
-    gf_Adam.run();
+	
+    std::string linearSystem_file("../config_params.json");
+    std::string GradientFlow_file("GradientFlow_params.json");
+    
+    GradientFlow<dim> gf(linearSystem_file, GradientFlow_file);
+    gf.run();
+    
 
     return 0;
 }

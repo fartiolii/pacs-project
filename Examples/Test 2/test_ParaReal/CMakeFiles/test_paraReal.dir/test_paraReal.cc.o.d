@@ -1,12 +1,12 @@
 CMakeFiles/test_paraReal.dir/test_paraReal.cc.o: \
  /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/test_paraReal.cc \
  /usr/include/stdc-predef.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/ParaReal.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/ParallelBase.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/NumericalAlgorithmBase.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/DescentStep.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/DescentStepBase.h \
- /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/LinearSystem.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/numerical_methods/ParaReal.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/numerical_methods/ParallelBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/numerical_methods/NumericalAlgorithmBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/utils/DescentStep.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/utils/DescentStepBase.h \
+ /home/ubuntu/Desktop/PacsProject/project/Examples/Test\ 2/test_ParaReal/../../../include/utils/LinearSystem.h \
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/grid/tria.h \
  /home/ubuntu/Documents/deal.II-v9.5.1/include/deal.II/base/config.h \
  /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h \
