@@ -24,7 +24,6 @@ This repository can be cloned as follows:
 git clone https://github.com/fartiolii/pacs-project.git
 cd pacs-project
 ```
-Since it is only a header library, this command provides its installation.
 
 
 # Test execution
@@ -53,6 +52,6 @@ make distclean
 ```
 
 # Results visualization
-Each test produces two output files ("y_vec.vtk" and "u_vec.vtk") which contain the obtained optimal vectors y and u, that
+Each test produces two output files ("y_vec.vtk" and "u_vec.vtk") containing the obtained optimal vectors y and u, that
 can be visualized using VisIt.
 
