@@ -2,7 +2,7 @@
 #  CMake script
 ##
 
-set(TARGET "test_paraReal")
+set(TARGET "test_paraFlow")
 
 set(TARGET_SRC
   ${TARGET}.cc
@@ -27,7 +27,7 @@ endif()
 deal_ii_initialize_cached_variables()
 project(${TARGET})
 
-
+# Add include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../include/utils)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../include/numerical_methods)
 

@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     MPI_Comm mpi_communicator(MPI_COMM_WORLD);
     unsigned int this_mpi_process(Utilities::MPI::this_mpi_process(mpi_communicator));
     
-    //Read parameters from file
+    //! Read parameters from file
     std::string linearSystem_file("../config_params.json");
     std::string ParaReal_file("ParaReal_params.json");
 

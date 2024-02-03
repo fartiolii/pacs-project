@@ -1,8 +1,8 @@
 {
-  "step_size_G": 1.5,
-  "step_size_F": 1.5,
-  "n_iter_G": 1,
-  "n_iter_F": 20,
-  "Solver G": "Euler",
-  "Solver F": "Euler"
+  "step_size_G": 1.0,
+  "step_size_F": 0.1,
+  "n_iter_G": 12,
+  "n_iter_F": 50,
+  "Solver G": "Adam",
+  "Solver F": "Adam"
 }

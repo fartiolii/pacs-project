@@ -1,7 +1,18 @@
+#ifndef PARALLEL_REAL_H
+#define PARALLEL_REAL_H
+
 #include "ParallelBase.h"
 
 using namespace dealii;
 
+/**
+ * @class ParaRealRoot
+ * @brief Implements the ParaReal algorithm on the root process.
+ * 
+ * @tparam dim The space dimension (2 or 3)
+ *
+ * This class implements the ParaReal algorithm executing on the root process.
+ */
 template<unsigned int dim>
 class ParaRealRoot: public ParallelRootBase<dim>
 {
@@ -9,22 +20,56 @@ public:
 
   using VT = VectorTypes;
 
+  /**
+   * @brief Constructor for ParaRealRoot.
+   *
+   * @param linear_system_filename The name of the file containing linear system parameters.
+   * @param ParaReal_params_filename The name of the file containing parameters for ParaReal.
+   */
   ParaRealRoot(const std::string& linear_system_filename, const std::string& ParaReal_params_filename);
+  
+  /**
+   * @brief Constructor for ParaRealRoot.
+   *
+   * @param gamma_val The value of the gamma parameter.
+   * @param nu_val The value of the nu parameter.
+   * @param N_grid The number of grid refinements.
+   * @param ParaReal_params_filename The name of the file containing parameters for ParaReal.
+   */
   ParaRealRoot(const double gamma_val, const double nu_val, const unsigned int N_grid, const std::string& ParaReal_params_filename);
+  
+  /**
+   * @brief Runs the ParaReal algorithm on the root process.
+   */
   void run() override;
   
 
 private:
 
+  /**
+   * @brief Retrieves the ParaReal parameters from a file.
+   *
+   * @param filename The name of the file containing ParaReal parameters.
+   */
   void get_numerical_method_params(const std::string& filename) override;
+  
+  /**
+   * @brief Checks if ParaReal has converged on the current interval (ParaReal convergence criterion).
+   *
+   * @return True if the ParaReal has converged, false otherwise.
+   */
   bool check_pr_interval_convergence();
+  
+  /**
+   * @brief Sets the number of iterations for operators G and F.
+   */
   void set_number_iter();
 
-  double			   global_T; 
+  double			   global_T;  //! Time interval length
   
-  double			   epsilon=1e-3;
-  VT::VectorArrayType              old_yu_vectors; 
-  VT::ArrayType			   initial_vectors_F;
+  double			   epsilon=1e-3; //! ParaReal convergence criterion parameter
+  VT::VectorArrayType              old_yu_vectors; //! stores vectors y and u obtained with the correction iteration at the previous iteration
+  VT::ArrayType			   initial_vectors_F; //! Initial vectors for operator F on root
 };
 
 template<unsigned int dim>
@@ -128,7 +173,7 @@ void ParaRealRoot<dim>::set_number_iter()
 template<unsigned int dim>
 void ParaRealRoot<dim>::run()
 {
-  unsigned int total_n_it=0;
+  unsigned int total_n_it=0; //! Counter of update rule iterations in series
   std::cout << "Initialization" << std::endl;
   for (unsigned int i=0; i<this->n_mpi_processes; i++)
   {
@@ -152,20 +197,20 @@ void ParaRealRoot<dim>::run()
   while(!this->converged)
   {
       std::cout << "Iteration n: " << it+1 << std::endl;
-      // Send Results to all ranks
+      //! Root sends initial conditions to all the other ranks
       for (unsigned int rank=1; rank<this->n_mpi_processes; rank++)
       {
         Utilities::MPI::isend(this->new_yu_vectors[rank-1], this->mpi_communicator, rank);
       }
       
-      // Root propagates its own F operator 
+      //! Root propagates its F operator  
       this->gf_F->set_initial_vectors(initial_vectors_F[0], initial_vectors_F[1]);
       this->gf_F->run(this->n_iter_F);
       this->F_vectors[0][0] = this->gf_F->get_y_vec();
       this->F_vectors[0][1] = this->gf_F->get_u_vec();
       this->converged_vec[0] = std::get<0>(this->gf_F->convergence_info());
 
-      // Receive F operator and local convergence results from all ranks
+      //! Root receives F operator results and convergence results from all the other ranks
       for (unsigned int rank=1; rank<this->n_mpi_processes; rank++)
       {
         VT::FutureTupleType future = Utilities::MPI::irecv<VT::TupleType>(this->mpi_communicator, rank);
@@ -175,7 +220,7 @@ void ParaRealRoot<dim>::run()
       }
       total_n_it += this->n_iter_F;
 
-      // Compute convergence and send result to other ranks
+      //! Root computes convergence and sends the result to the other ranks
       this->converged = this->check_convergence();
       for (unsigned int rank=1; rank<this->n_mpi_processes; rank++)
       {
@@ -184,21 +229,21 @@ void ParaRealRoot<dim>::run()
 
       if(!this->converged)
       {
-  	// Perform correction iteration
-  	// Update the value of y and u obtained from root (operator G cancels out)
+  	//! Perform correction iteration
+	//! Update the value of y and u obtained from root 
 	this->new_yu_vectors[0][0] = this->F_vectors[0][0];
 	this->new_yu_vectors[0][1] = this->F_vectors[0][1];
 	
         this->G_old_vectors = this->G_new_vectors;
         for (unsigned int rank=1; rank<this->n_mpi_processes; rank++)
         {
-          // Update G
+          //! Update G
           this->gf_G->set_initial_vectors(this->new_yu_vectors[rank-1][0], this->new_yu_vectors[rank-1][1]);
           this->gf_G->run(this->n_iter_G);
           this->G_new_vectors[rank][0] = this->gf_G->get_y_vec();
           this->G_new_vectors[rank][1] = this->gf_G->get_u_vec();
 
-          // Update values of y and u
+          //! Update values of y and u with correction iteration
           Vector<double> y_temp(this->G_new_vectors[rank][0]);
 
           y_temp -= this->G_old_vectors[rank][0];
@@ -214,7 +259,7 @@ void ParaRealRoot<dim>::run()
         total_n_it += this->n_iter_G*(this->n_mpi_processes-1);
         
 
-        // Output results of this iteration process
+        //! Output results of this iteration process
         for (unsigned int rank=0; rank<this->n_mpi_processes; rank++)
         {
           this->gf_G->set_initial_vectors(this->new_yu_vectors[rank][0], this->new_yu_vectors[rank][1]);
@@ -222,15 +267,16 @@ void ParaRealRoot<dim>::run()
         }
       }
 
-      if (!this->converged && check_pr_interval_convergence())
+      if (!this->converged && check_pr_interval_convergence()) //! check ParaReal convergence criterion
       {
-        //U_0 = U_N
+        //! Time interval shift by imposing U_0 = U_N
       	this->new_yu_vectors[0] = this->new_yu_vectors[this->n_mpi_processes-1];
       	this->gf_G->set_initial_vectors(this->new_yu_vectors[0][0], this->new_yu_vectors[0][1]);
       	initial_vectors_F[0] = this->new_yu_vectors[0][0];
       	initial_vectors_F[1] = this->new_yu_vectors[0][1];
       	this->gf_F->set_initial_vectors(initial_vectors_F[0], initial_vectors_F[1]);
 
+        //! Operator G computes the initial conditions on the new interval
         for (unsigned int i=0; i<this->n_mpi_processes; i++)
         {
           this->gf_G->run(this->n_iter_G);
@@ -250,16 +296,24 @@ void ParaRealRoot<dim>::run()
       it++;
   }
   
+  //! Output of final results
   std::cout << "Final results " << std::endl;
   std::cout << "ParaReal converged in: " << total_n_it << " iterations" << std::endl;
   this->gf_G->set_initial_vectors(this->F_vectors[this->converged_rank][0], this->F_vectors[this->converged_rank][1]);
-  this->gf_G->output_iteration_results();
-  this->gf_G->output_results_vectors();
+  this->gf_G->output_iteration_results(); //! outputs the cost functional J and the norm of g at the solution vectors y_vec and u_vec
+  this->gf_G->output_results_vectors(); //! outputs the obtained y_vec and u_vec in .vtk files for visualization
 }
 
 
 
-
+/**
+ * @class ParaRealRankN
+ * @brief Implements the ParaReal algorithm on all processes except root.
+ * 
+ * @tparam dim The space dimension (2 or 3)
+ *
+ * This class implements the ParaReal algorithm executing on all processes except the root.
+ */
 template<unsigned int dim>
 class ParaRealRankN: public ParallelRankNBase<dim>
 {
@@ -267,16 +321,41 @@ public:
 
   using VT = VectorTypes;
 
+  /**
+   * @brief Constructor for ParaRealRankN.
+   *
+   * @param linear_system_filename The name of the file containing linear system parameters.
+   * @param ParaReal_params_filename The name of the file containing parameters for ParaReal.
+   */
   ParaRealRankN(const std::string& linear_system_filename, const std::string& ParaReal_params_filename);
+  
+  /**
+   * @brief Constructor for ParaRealRankN.
+   *
+   * @param gamma_val The value of the gamma parameter.
+   * @param nu_val The value of the nu parameter.
+   * @param N_grid The number of grid refinements.
+   * @param ParaReal_params_filename The name of the file containing parameters for ParaReal.
+   */
   ParaRealRankN(const double gamma_val, const double nu_val, const unsigned int N_grid, const std::string& ParaReal_params_filename);
   
 
 private:
 
+  /**
+   * @brief Retrieves the ParaReal parameters from a file.
+   *
+   * @param filename The name of the file containing ParaReal parameters.
+   */
   void get_numerical_method_params(const std::string& filename) override;
+  
+  /**
+   * @brief Sets the number of iterations for operator F.
+   */
   void set_number_iter();
 
-  double	global_T; 
+  double	global_T;  //! Time interval length
+
  	
 };
 
@@ -329,8 +408,7 @@ void ParaRealRankN<dim>::set_number_iter()
     assert(this->n_mpi_processes != 0);
 
     this->n_iter_F = static_cast<unsigned int>(global_T/(this->n_mpi_processes*this->step_size_F));
-    std::cout <<  " n_iter_F: " << this->n_iter_F << std::endl;
 }
 
 
-
+#endif // PARALLEL_REAL_H

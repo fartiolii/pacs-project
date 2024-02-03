@@ -1,0 +1,7 @@
+{
+  "T": 100,
+  "step_size_G": 1.5,
+  "step_size_F": 1.0,
+  "Solver G": "Euler",
+  "Solver F": "Euler"
+}
