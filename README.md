@@ -1,9 +1,9 @@
 This repository contains the code for the APSC project "Parareal-accelerated gradient flow iterations for optimal control problems".
 
 # Subfolder structure
-/include contains all the header files of the template classes
-/Examples contains all the files to compile and run the tests
-/Report contains the report of the project
+/include contains all the header files of the template classes 
+/Examples contains all the files to compile and run the tests 
+/Report contains the report of the project 
 
 
 # Requirements
@@ -37,7 +37,7 @@ To compile and run in parallel the examples related to the Parareal and ParaFlow
 cmake -DDEAL_II_DIR=/path/to/dealii .
 make release
 make 
-mpirun -np 4 ./test_ParaFlow
+mpirun -np 4 ./test_paraFlow
 ```
 In the example above, the number of processors has been chosen equal to 4 but it can be changed as desired.
 
@@ -51,6 +51,6 @@ make distclean
 ```
 
 # Results visualization
-Each test produces two output files ("y_vec.vtk" and "u_vec.vtk") which contain the obtained optimal vectors y and u, which
+Each test produces two output files ("y_vec.vtk" and "u_vec.vtk") which contain the obtained optimal vectors y and u, that
 can be visualized using VisIt.
 
