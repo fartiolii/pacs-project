@@ -2,7 +2,9 @@ This repository contains the code for the APSC project "Parareal-accelerated gra
 
 # Subfolder structure
 /include contains all the header files of the template classes 
+
 /Examples contains all the files to compile and run the tests 
+
 /Report contains the report of the project 
 
 
