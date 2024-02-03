@@ -11,7 +11,6 @@ int main()
     std::string ParaFlowS_file("ParaFlowS_params.json");
 
     ParaFlowS<dim> PFs(linearSystem_file, ParaFlowS_file);
-    //ParaFlowS<dim> PFs(1.0, 0.01, 5, ParaFlowS_file);
     PFs.run();
 
     return 0;
