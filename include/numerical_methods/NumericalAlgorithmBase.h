@@ -76,14 +76,6 @@ protected:
      */
   void get_linear_system_params(const std::string& filename);
   
-  /**
-     * @brief Updates the linear system parameters.
-     *
-     * @param gamma_val The value of the gamma parameter.
-     * @param nu_val The value of the nu parameter.
-     * @param N The number of grid refinements.
-     */
-  void update_parameters(const double gamma_val, const double nu_val, const unsigned int N);
   
   //! Linear system parameters
   double 	gamma;
@@ -118,13 +110,6 @@ void NumericalAlgorithmBase<dim>::get_linear_system_params(const std::string& fi
   grid_refinement = parameters["Num grid refinements"];
 }
 
-template<unsigned int dim>
-void NumericalAlgorithmBase<dim>::update_parameters(const double gamma_val, const double nu_val, const unsigned int N)
-{
-  gamma = gamma_val;
-  nu = nu_val;
-  grid_refinement = N;
-}
 
 
 template<unsigned int dim>
