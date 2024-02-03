@@ -229,11 +229,11 @@ private:
   //! Quadrature formula used for the integrals required to assemble mass and stiffness matrices
   const QGaussSimplex<dim> quadrature_formula;
 
-  //! Number of times to refine the grid
-  unsigned int          grid_refinement;
-  
   //! Number of node coefficients of y_vec and u_vec
   unsigned int          vector_size;
+
+  //! Number of times to refine the grid
+  unsigned int          grid_refinement;
   
   //! Parameters of the discrete optimal control problem
   double                nu;
@@ -270,8 +270,7 @@ private:
 
 };
 
-//      **********************     IMPLEMENTATIONS
-//      *******************************************
+
 
 
 template<unsigned int dim>
@@ -282,8 +281,8 @@ LinearSystem<dim>::LinearSystem(const double gamma_val, const double nu_val, con
   , dof_handler(triangulation)
   , dof_handler_system(triangulation)
   , quadrature_formula(fe.degree+1)
-  , grid_refinement(N)
   , vector_size(0)
+  , grid_refinement(N)
   , nu(nu_val)
   , gamma(gamma_val)
 {
